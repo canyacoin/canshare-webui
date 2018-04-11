@@ -1,0 +1,368 @@
+/*
+  EBM Variables
+*/
+
+//== Colors
+//
+//## Gray, brand and blue scale colors for use across EBM.
+$blue-base: #3A4959;
+
+$blue-darker:            lighten($blue-base, 0%) !default; // #222
+$blue-dark:              lighten($blue-base, 21%) !default;   // #333
+$blue:                   lighten($blue-base, 35%) !default; // #555
+$blue-light:             lighten($blue-base, 63%) !default;   // #999
+$blue-lighter:           lighten($blue-base, 70%) !default; // #eee
+
+// EBM:REF
+$brand-inverse:         #081A26 !default;
+
+// EBM:REF
+// SOCIAL COLORS
+$color-facebook:    #3B5998 !default;
+$color-twitter:     #34CCFE !default;
+$color-pinterest:   #D02420 !default;
+$color-google-plus: #DC4335 !default;
+$color-linkedin:    #1C87BD !default;
+$color-youtube:     #F23030 !default;
+$color-instagram:   #4187FB !default;
+
+// COLOR LISTS
+$bluescale-list:
+  $blue-darker,
+  $blue-dark,
+  $blue,
+  $blue-light,
+  $blue-lighter;
+
+$social-colors-list:
+  $color-facebook,
+  $color-twitter,
+  $color-pinterest,
+  $color-google-plus,
+  $color-youtube,
+  $color-instagram,
+  $color-linkedin;
+
+// COLOR SUFIX's
+$bluescale-sufix-list:
+  'blue-darker',
+  'blue-dark',
+  'blue',
+  'blue-light',
+  'blue-lighter';
+
+$social-colors-sufix-list:
+  'facebook',
+  'twitter',
+  'pinterest',
+  'google-plus',
+  'youtube',
+  'instagram',
+  'linkedin';
+
+// EBM:REF
+$breakpoints-sufix-list:
+  'xs',
+  'sm',
+  'md',
+  'lg';
+
+$breakpoints-only-sufix-list:
+  'xs-only',
+  'sm-only',
+  'md-only',
+  'lg-only';
+
+$breakpoints-up-sufix-list:
+  'xs-up',
+  'sm-up',
+  'md-up',
+  'lg-up';
+
+$breakpoints-down-sufix-list:
+  'sm-down',
+  'md-down',
+  'lg-down';
+
+// EBM:REF
+$sizes-list:
+  "xs",
+  "sm",
+  "lg",
+  "xl";
+
+// EBM:REF
+$text-elements-list:
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "p",
+  "span",
+  "a",
+  "em",
+  "i",
+  "strong",
+  "li";
+
+// EBM:REF
+$headings-list:
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6";
+
+// EBM:REF
+$headings-class-list:
+  ".h1",
+  ".h2",
+  ".h3",
+  ".h4",
+  ".h5",
+  ".h6";
+
+// EBM:REF
+$text-responsive-elements-list:
+  "p", ".p",
+  "span",
+  "em",
+  "strong",
+  "label",
+  "a",
+  "i",
+  "ul",
+  "ol",
+  "li";
+
+$children-text-responsive-elements-list:
+  "> p", "> .p",
+  "> span",
+  "> em",
+  "> strong",
+  "> label",
+  "> a",
+  "> i",
+  "> ul",
+  "> ol",
+  "> li";
+
+// Box Model abbreviations list
+$box-model-abbr:
+  'p',
+  'pt',
+  'pr',
+  'pb',
+  'pl',
+  'm',
+  'mt',
+  'mr',
+  'mb',
+  'ml';
+
+$box-model-xy-abbr:
+  'p',
+  'm';
+
+$box-model-x-abbr:
+  'pr',
+  'pl',
+  'mr',
+  'ml';
+
+$box-model-y-abbr:
+  'pt',
+  'pb',
+  'mt',
+  'mb';
+
+$box-model-xy-sides:
+  'padding',
+  'margin';
+
+$box-model-x-sides:
+  'padding-right',
+  'padding-left',
+  'margin-right',
+  'margin-left';
+
+$box-model-y-sides:
+  'padding-top',
+  'padding-bottom',
+  'margin-top',
+  'margin-bottom';
+
+$box-model-sides:
+  'padding',
+  'padding-top',
+  'padding-right',
+  'padding-bottom',
+  'padding-left',
+  'margin',
+  'margin-top',
+  'margin-right',
+  'margin-bottom',
+  'margin-left';
+
+$box-model-ch-abbr:
+  'p-ch',
+  'pt-ch',
+  'pr-ch',
+  'pb-ch',
+  'pl-ch',
+  'm-ch',
+  'mt-ch',
+  'mr-ch',
+  'mb-ch',
+  'ml-ch';
+
+$box-model-ch-xy-abbr:
+  'p-ch',
+  'm-ch';
+
+$box-model-ch-x-abbr:
+  'pr-ch',
+  'pl-ch',
+  'mr-ch',
+  'ml-ch';
+
+$box-model-ch-y-abbr:
+  'pt-ch',
+  'pb-ch',
+  'mt-ch',
+  'mb-ch';
+
+$box-model-ch-abbr-percentage:
+  'pp-ch',
+  'ptp-ch',
+  'prp-ch',
+  'pbp-ch',
+  'plp-ch',
+  'mp-ch',
+  'mtp-ch',
+  'mrp-ch',
+  'mbp-ch',
+  'mlp-ch';
+
+$input-type-list:
+// select,
+// textarea,
+"text",
+"password",
+// "datetime",
+// "datetime-local",
+// "date",
+// "month",
+// "time",
+// "week",
+// "number",
+"email";
+// "url",
+// "search",
+// "tel",
+// "color";
+
+// Fontsize list
+$font-size-list:
+  $h1-font-size,
+  $h2-font-size,
+  $h3-font-size,
+  $h4-font-size,
+  $h5-font-size,
+  $h6-font-size;
+
+// B4 grid config
+$screen-phone: map-get($grid-breakpoints, sm);
+$screen-tablet: map-get($grid-breakpoints, md);
+$screen-desktop: map-get($grid-breakpoints, lg);
+$screen-lg-desktop: map-get($grid-breakpoints, xl);
+// $screen-xl-desktop: map-get($grid-breakpoints, xl);
+
+// CUSTOM CONTAINER VARIABLES
+$container-xs: 480px + $grid-gutter-width;
+$container-sm: map-get($container-max-widths, sm);
+$container-md: map-get($container-max-widths, md);
+$container-lg: map-get($container-max-widths, lg);
+$container-xl: map-get($container-max-widths, xl);
+$container-xxl: 84rem;
+$container-fluid: $grid-gutter-width / 2;
+
+/*
+  Text in rem units
+  Used in text-control partials
+*/
+$text-in-rems-md-up: 1.4;
+$line-height-md-up: 1.3;
+$text-in-rems-sm-only: 0.9;
+$line-height-sm-only: 1.2;
+$text-in-rems-xs-only: 0.7;
+$line-height-xs-only: 1.1;
+
+//** Unit-less `line-height` for use in components like buttons.
+$line-height-base:        1.71428571; // 24/14
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+$line-height-computed:    floor(($font-size-base * $line-height-base)); // ~24px
+
+// Set the global measure (range: 1 - 9)
+$ebm-times: 7;
+
+// Set the global loop limit number
+$loop-limit: 10;
+
+// Define the em-base for rems to px conversion
+$px-to-rems: true;    // True if you want them on rems
+$em-base: $font-size-base;
+
+// Include and determine border radius:
+$rounded-borders: true;  // If no bootstrap
+
+// Include and determine box shadows:
+$box-shadows: true;
+$x-axis: 0px;
+$y-axis: 3px;
+$blur: 3px;
+$size: 0px;
+$color: #313233;
+$alpha: 0.15;
+
+// RGBA ammount for opacity control:
+$rgba-ammount: 0.3;
+
+// Buttons control variables
+$buttons-custom-border-size: 3px;
+$buttons-custom-border-style: solid;
+$buttons-custom-color-control: 18%;
+$button-icon-height-control: 36px;
+
+// Global sufix
+$global-sufix:              "ebm-" !default;
+
+// Add !important value to all EBM : Experimental, look on _type-custom.scss for usage
+$importantize:              "!important"    !default;
+
+// ALT FONT for FONTS_CUSTOM
+$font-family-alt:         'Oleo Script', cursive, $font-family-sans-serif;
+$font-family-serif:       'Sanchez', cursive, $font-family-sans-serif;
+
+$icon-fonts-path: "/icons/";
+
+// Hero unit
+$hero-unit-height-control: 810px;
+$hero-unit-height-control-mobile: 100vh;
+$header-height-control: 98px;
+$header-height-mobile: $header-height-control - 30;
+$logo-width-control-mobile: 94px;
+$logo-width-control: 132px;
+
+// Accordion
+$accordion-width-control: 35px;
+
+// Additional screen sizes
+$xl-desktop: 1500px;
+$xxl-desktop: 1980px;
+
+// box model spacing sizes:
+$spacing-sizes: 3;

@@ -1,0 +1,10 @@
+/*
+  Bootstrap overrides
+*/
+
+// Use this in B4 _forms.scss for adjusting line-heights in special input types
+// @supports (-webkit-text-size-adjust:none) and (not (-ms-accelerator:true)) and (not (-moz-appearance:none)) {}
+
+.img-responsive {
+  width: 100%;
+}

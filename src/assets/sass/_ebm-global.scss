@@ -1,0 +1,34 @@
+/*
+  EBM Global styles
+*/
+html {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+body {}
+
+.site-wrapper,
+.site-content {
+  overflow-x: hidden;
+  position: relative;
+}
+
+/*
+  Media queries
+*/
+@media #{$xs-only} {}
+@media #{$sm-only} {}
+@media #{$md-only} {}
+@media #{$lg-only} {}
+@media #{$sm-down} {
+  body {}
+}
+@media #{$md-down} {}
+@media #{$lg-down} {}
+@media #{$sm-up} {}
+@media #{$md-up} {}
+@media #{$lg-up} {}
+@media #{$xl-up} {}
+@media #{$xxl-up} {}
