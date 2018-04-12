@@ -3,8 +3,9 @@
     @include box-shadow-default;
     border-radius: $border-radius;
     background-color: white;
-    padding: get-spacer(2);
+    padding: get-spacer(3);
   }
+  margin-bottom: get-spacer(3);
 }
 
 .dropzone {

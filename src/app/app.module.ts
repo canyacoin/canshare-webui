@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DropzoneComponent } from './dropzone/dropzone.component';
+import { FilesListComponent } from './files-list/files-list.component';
+import { FileComponent } from './file/file.component';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
@@ -23,7 +25,9 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    DropzoneComponent
+    DropzoneComponent,
+    FilesListComponent,
+    FileComponent
   ],
   imports: [
     BrowserModule,

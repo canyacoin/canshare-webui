@@ -1,0 +1,44 @@
+.file {
+  @include flex-row;
+  .progress,
+  .content {
+    @include flex-column-center;
+    height: 70px;
+  }
+  .progress {
+    @include flex-align-center;
+    flex-basis: 70px;
+    width: 70px;
+  }
+  .content {
+    width: 100%;
+  }
+  .name {
+    font-weight: $bold;
+    display: block;
+  }
+  .link {
+    font-size: $font-size-sm;
+  }
+  .copy {
+    border-radius: $border-radius-sm;
+    background-color: $gray-300;
+    font-size: $font-size-sm;
+    padding: 1px 7px;
+    color: white;
+  }
+
+  .svg {
+    height: 100%;
+    width: 100%;
+    circle {
+      transition: stroke-dashoffset 1s linear;
+      stroke-dashoffset: 0;
+      stroke-width: 4px;
+      stroke: $gray-100;
+    }
+    .bar {
+      stroke: theme-color('primary');
+    }
+  }
+}
