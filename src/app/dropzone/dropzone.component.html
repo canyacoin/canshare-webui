@@ -1,0 +1,12 @@
+<section id="dropzone">
+  <div class="container">
+    <div class="wrapper">
+      <dropzone
+        [message]="dzMessage"
+        (error)="onUploadError($event)"
+        (success)="onUploadSuccess($event)"
+        (addedFile)="onFileAdded($event, file)">
+        </dropzone>
+    </div>
+  </div>
+</section>

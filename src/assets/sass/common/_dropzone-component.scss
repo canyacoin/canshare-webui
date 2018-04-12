@@ -1,0 +1,37 @@
+#dropzone {
+  .wrapper {
+    @include box-shadow-default;
+    border-radius: $border-radius;
+    background-color: white;
+    padding: get-spacer(2);
+  }
+}
+
+.dropzone {
+  &.dz-wrapper {
+    .dz-message {
+      background-color: $gray-100 !important;
+      border: 2px dashed $blue !important;
+      border-radius: $border-radius;
+      min-height: 35vh !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      margin: 0 !important;
+      .dz-text {
+        i, h4, p {
+          color: $gray-500;
+        }
+        i {
+          margin-bottom: get-spacer(3);
+          font-size: $h2-font-size;
+          display: inline-block;
+        }
+        h4 {
+        }
+      }
+    }
+    .dz-preview {
+      display: none;
+    }
+  }
+}
