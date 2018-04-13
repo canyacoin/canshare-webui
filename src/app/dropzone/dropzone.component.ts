@@ -25,8 +25,8 @@ export class DropzoneComponent implements OnInit {
     console.log($evt);
   }
 
-  onUploadSuccess($evt) {
-    console.log($evt);
+  onUploadSuccess(file, $evt) {
+    console.log(file, $evt);
   }
 
   onFileAdded(file, $evt?) {
@@ -53,7 +53,7 @@ export class DropzoneComponent implements OnInit {
       };
     })(file, this);
 
-    reader.readAsText(file);
+    reader.readAsDataURL(file);
   }
 
 }

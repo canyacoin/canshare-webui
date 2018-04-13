@@ -57,6 +57,8 @@ export class IpfsService {
 
     stream.on('data', (ipfsFile) => {
       this.onFileUploadEnd.next({ ipfsFile, fileObj });
+
+      console.log(node);
     });
 
     myReadableStreamBuffer.on('data', (chunk) => {
