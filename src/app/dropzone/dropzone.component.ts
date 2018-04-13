@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IpfsService } from '../@services/ipfs.service';
 
 @Component({
   selector: 'app-dropzone',
@@ -15,7 +16,7 @@ export class DropzoneComponent implements OnInit {
     <span class="btn btn-primary">Browse</span>
   `
 
-  constructor() { }
+  constructor(private ipfs: IpfsService) {}
 
   ngOnInit() {
   }
@@ -30,20 +31,21 @@ export class DropzoneComponent implements OnInit {
 
   onFileAdded(file, $evt?) {
     console.log(file);
-    return;
 
-    // let reader = new FileReader();
+    let reader = new FileReader();
 
-    // let content;
+    let content;
 
-    // reader.onload = ((theFile, comp) => {
-    //   return (e) => {
-    //     content = JSON.parse(e.target.result);
-    //     content = JSON.parse(content);
-    //   };
-    // })(file, this);
+    reader.onload = ((theFile, comp) => {
+      return (e) => {
+        console.log(e);
+        // content = JSON.parse(e.target.result);
+        // content = JSON.parse(content);
+        comp.ipfs.upload(e.target.result);
+      };
+    })(file, this);
 
-    // reader.readAsText(file);
+    reader.readAsText(file);
   }
 
 }

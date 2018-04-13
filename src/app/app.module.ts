@@ -11,13 +11,14 @@ import { FooterComponent } from './footer/footer.component';
 import { DropzoneComponent } from './dropzone/dropzone.component';
 import { FilesListComponent } from './files-list/files-list.component';
 import { FileComponent } from './file/file.component';
+import { IpfsService } from './@services/ipfs.service';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
   url: '/upload',
   autoQueue: false,
-  maxFilesize: 1,
-  acceptedFiles: '*'
+  maxFilesize: 50,
+  acceptedFiles: null
 };
 
 @NgModule({
@@ -34,6 +35,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     DropzoneModule
   ],
   providers: [
+    IpfsService,
     {
       provide: DROPZONE_CONFIG,
       useValue: DEFAULT_DROPZONE_CONFIG,
