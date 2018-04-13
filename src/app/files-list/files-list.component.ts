@@ -23,7 +23,6 @@ export class FilesListComponent implements OnInit {
     });
 
     ipfs.onFileUpload.subscribe(data => {
-      console.log(data);
       this.fileComponents[data.index].instance.pctg = data.pctg;
     });
 

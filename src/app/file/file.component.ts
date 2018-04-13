@@ -29,7 +29,7 @@ export class FileComponent implements OnInit {
 
   renderIpfsLink() {
     console.log(this.ipfsHash);
-    this.ipfsLink = `<a href="https://gateway.ipfs.io/ipfs/${this.ipfsHash}" class="link">${this.ipfsHash}</a> <span>-</span> <span class="copy">copy</span>`;
+    this.ipfsLink = `<a href="https://gateway.ipfs.io/ipfs/${this.ipfsHash}" target="_blank" class="link">${this.ipfsHash}</a> <span>-</span> <span class="copy">copy</span>`;
     this.zone.run(() => console.log('field run'));
   }
 
