@@ -2,13 +2,11 @@
   <div class="progress">
     <svg class="svg" xmlns="http://www.w3.org/2000/svg">
       <circle class="circle" r="21" cx="50%" cy="50%" fill="transparent" stroke-dasharray="0"></circle>
-      <circle class="bar" r="21" cx="50%" cy="50%" fill="transparent" stroke-dasharray="131.95"></circle>
+      <circle class="bar" r="21" cx="50%" cy="50%" fill="transparent" stroke-dasharray="131.95" [style.stroke-dashoffset]="pctg"></circle>
     </svg>
   </div>
   <div class="content">
-    <span class="name">File name</span>
-    <div>
-      <a href="#" class="link">file ipfs link</a> <span>-</span> <span class="copy">copy</span>
-    </div>
+    <span class="name">{{ name }}</span>
+    <div [innerHtml]="ipfsLink"></div>
   </div>
 </article>

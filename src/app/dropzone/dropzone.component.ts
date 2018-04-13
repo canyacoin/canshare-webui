@@ -38,10 +38,18 @@ export class DropzoneComponent implements OnInit {
 
     reader.onload = ((theFile, comp) => {
       return (e) => {
-        console.log(e);
-        // content = JSON.parse(e.target.result);
-        // content = JSON.parse(content);
-        comp.ipfs.upload(e.target.result);
+        // console.log(e);
+        comp.ipfs.fileCount++;
+        let f = {
+          index: comp.ipfs.fileCount,
+          name: theFile.name,
+          type: theFile.type,
+          size: theFile.size,
+          progress: 0,
+        };
+        comp.ipfs.files.push(f);
+        comp.ipfs.onFileAdded.next(f);
+        comp.ipfs.upload(e.target.result, f);
       };
     })(file, this);
 

@@ -7,7 +7,7 @@ declare let require: any;
 const streamBuffers = require('stream-buffers');
 const IPFS = require('ipfs');
 const node = new IPFS({
-  repo: 'assets/ipfs'
+  repo: '../assets/ipfs'
 });
 
 @Injectable()
@@ -15,9 +15,15 @@ export class IpfsService {
 
   progress: number = 0
 
+  fileCount: number = -1
+
   files: Array<any> = []
 
   onFileUpload: Subject<any> = new Subject<any>()
+
+  onFileAdded: Subject<any> = new Subject<any>()
+
+  fileProgressPerimeter: number = 131.95
 
   constructor() {
     node.on('ready', () => {
@@ -38,7 +44,7 @@ export class IpfsService {
     });
   }
 
-  upload(fileObj) {
+  upload(fileContent, fileObj) {
     this.progress = 0;
 
     let myReadableStreamBuffer = new streamBuffers.ReadableStreamBuffer({
@@ -55,12 +61,20 @@ export class IpfsService {
       console.log(chunk);
       this.progress += chunk.byteLength;
 
+      let file = this.files[fileObj.index];
+      file.progress += chunk.byteLength;
+      file.pctg = (file.progress >= file.size) ?
+        0 :
+        this.fileProgressPerimeter - ((file.progress / file.size) * this.fileProgressPerimeter);
+
+      this.onFileUpload.next(file);
+
       myReadableStreamBuffer.resume();
     });
 
     stream.write(myReadableStreamBuffer);
 
-    myReadableStreamBuffer.put(Buffer.from(fileObj));
+    myReadableStreamBuffer.put(Buffer.from(fileContent));
     myReadableStreamBuffer.stop();
 
     myReadableStreamBuffer.on('end', () => {
