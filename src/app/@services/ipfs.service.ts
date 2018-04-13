@@ -21,6 +21,8 @@ export class IpfsService {
 
   onFileUpload: Subject<any> = new Subject<any>()
 
+  onFileUploadEnd: Subject<any> = new Subject<any>()
+
   onFileAdded: Subject<any> = new Subject<any>()
 
   fileProgressPerimeter: number = 131.95
@@ -53,12 +55,11 @@ export class IpfsService {
 
     let stream = node.files.addReadableStream();
 
-    stream.on('data', (file) => {
-      console.log(file);
+    stream.on('data', (ipfsFile) => {
+      this.onFileUploadEnd.next({ ipfsFile, fileObj });
     });
 
     myReadableStreamBuffer.on('data', (chunk) => {
-      console.log(chunk);
       this.progress += chunk.byteLength;
 
       let file = this.files[fileObj.index];

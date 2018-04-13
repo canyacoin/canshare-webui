@@ -12,26 +12,30 @@ export class FilesListComponent implements OnInit {
 
   @ViewChild("filesList", { read: ViewContainerRef }) container
 
-  fileComponents: Array<FileComponent> = []
+  fileComponents: Array<any> = []
 
   constructor(
     private ipfs: IpfsService,
     private resolver: ComponentFactoryResolver) {
+
     ipfs.onFileAdded.subscribe(data => {
       this.listFile(data);
     });
 
     ipfs.onFileUpload.subscribe(data => {
       console.log(data);
-      this.updateFile(data);
+      this.fileComponents[data.index].instance.pctg = data.pctg;
+    });
+
+    ipfs.onFileUploadEnd.subscribe((data) => {
+      console.log(data);
+      let file = this.fileComponents[data.fileObj.index].instance;
+      file.ipfsHash = data.ipfsFile.hash;
+      file.renderIpfsLink();
     });
   }
 
   ngOnInit() {
-  }
-
-  updateFile(data) {
-    this.fileComponents[data.index].instance.pctg = data.pctg;
   }
 
   listFile(data) {

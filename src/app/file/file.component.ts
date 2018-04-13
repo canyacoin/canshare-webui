@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-file',
@@ -22,13 +22,15 @@ export class FileComponent implements OnInit {
 
   ipfsHash: string
 
-  constructor() { }
+  constructor(private zone: NgZone) {}
 
   ngOnInit() {
   }
 
   renderIpfsLink() {
-    // <a href="#" class="link">file ipfs link</a> <span>-</span> <span class="copy">copy</span>
+    console.log(this.ipfsHash);
+    this.ipfsLink = `<a href="https://gateway.ipfs.io/ipfs/${this.ipfsHash}" class="link">${this.ipfsHash}</a> <span>-</span> <span class="copy">copy</span>`;
+    this.zone.run(() => console.log('field run'));
   }
 
 }
