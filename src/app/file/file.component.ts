@@ -1,5 +1,9 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 
+declare var require: any;
+
+const clipboard = require('clipboard');
+
 @Component({
   selector: 'app-file',
   templateUrl: './file.component.html',
@@ -29,8 +33,23 @@ export class FileComponent implements OnInit {
 
   renderIpfsLink() {
     console.log(this.ipfsHash);
-    this.ipfsLink = `<a href="https://gateway.ipfs.io/ipfs/${this.ipfsHash}" target="_blank" class="link">${this.ipfsHash}</a> <span>-</span> <span class="copy">copy</span>`;
+    let link = `https://gateway.ipfs.io/ipfs/${this.ipfsHash}`;
+    this.ipfsLink = `<a href="${link}" target="_blank" class="link">${this.ipfsHash}</a> <span>-</span> <span class="copy copy-${this.ipfsHash}">copy</span>`;
     this.zone.run(() => console.log('field run'));
+
+    new clipboard(`.copy-${this.ipfsHash}`, {
+      text: function(trigger) {
+
+        trigger.innerText = 'copied!';
+        trigger.classList.add('copied');
+        setTimeout(() => {
+          trigger.innerText = 'copy';
+          trigger.classList.remove('copied');
+        }, 2000);
+
+        return link;
+      }
+    });
   }
 
 }

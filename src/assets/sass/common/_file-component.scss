@@ -27,10 +27,19 @@
   }
   .copy {
     border-radius: $border-radius-sm;
+    transition: all 0.2s ease-in-out;
     background-color: $gray-300;
     font-size: $font-size-sm;
     padding: 1px 7px;
     color: white;
+    &:hover {
+      @include box-shadow-default;
+      background-color: $gray-500;
+      cursor: pointer;
+    }
+    &.copied {
+      background-color: $green;
+    }
   }
 
   .svg {
