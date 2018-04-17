@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ComponentFactory, ComponentRef, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 import { IpfsService } from '../@services/ipfs.service';
+import { LocalStorageService } from '../@services/local-storage.service';
 import { FileComponent } from '../file/file.component';
 
 @Component({
@@ -14,11 +15,14 @@ export class FilesListComponent implements OnInit {
 
   fileComponents: Array<any> = []
 
-  hasNoFiles: boolean = true
+  hasNoFiles: boolean = false
 
   constructor(
     private ipfs: IpfsService,
-    private resolver: ComponentFactoryResolver) {
+    private resolver: ComponentFactoryResolver,
+    private ls: LocalStorageService) {
+
+    ls.init();
 
     ipfs.onFileAdded.subscribe(data => {
       this.hasNoFiles = false;
@@ -34,10 +38,45 @@ export class FilesListComponent implements OnInit {
       let file = this.fileComponents[data.fileObj.index].instance;
       file.ipfsHash = data.ipfsFile.hash;
       file.renderIpfsLink();
+
+      this.storeFile(data);
     });
   }
 
   ngOnInit() {
+    let files = this.ls.getFiles();
+
+    if (Object.keys(files).length == 0) {
+      this.hasNoFiles = true;
+      return null;
+    }
+
+    Object.keys(files).forEach(key => {
+      this.ipfs.fileCount++;
+
+      let fileObj = files[key];
+      this.listFile(fileObj);
+
+      let fileComp = this.fileComponents[this.ipfs.fileCount].instance;
+      fileComp.ipfsHash = fileObj.hash;
+      fileComp.pctg = 0;
+      fileComp.renderIpfsLink();
+    });
+  }
+
+  storeFile({ ipfsFile, fileObj }) {
+    let files = this.ls.getFiles();
+
+    files[ipfsFile.hash] = {
+      hash: ipfsFile.hash,
+      path: ipfsFile.path,
+      size: ipfsFile.size,
+      name: fileObj.name,
+      type: fileObj.type,
+      pctg: 0,
+    }
+
+    this.ls.store({ files });
   }
 
   listFile(data) {

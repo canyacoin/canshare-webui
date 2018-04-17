@@ -33,10 +33,6 @@ export class DropzoneComponent implements OnInit {
   overlayClass: string = ''
 
   constructor(private ipfs: IpfsService) {
-    ipfs.onNodeStart.subscribe(() => {
-
-    });
-
     ipfs.onNodeReady.subscribe(isReady => {
       this.nodeIsReady = isReady;
     });
