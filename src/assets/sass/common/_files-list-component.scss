@@ -1,5 +1,14 @@
 #files-list {
   .wrapper {
-    background-color: white;
+  }
+  .message {
+    @include flex-column-center;
+    background-color: rgba(white, 0.5);
+    padding: get-spacer(3);
+    text-align: center;
+    min-height: 70px;
+    p {
+      margin: 0;
+    }
   }
 }

@@ -1,5 +1,6 @@
 .file {
   @include flex-row;
+  background-color: white;
   .progress,
   .content {
     @include flex-column-center;

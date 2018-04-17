@@ -14,11 +14,14 @@ export class FilesListComponent implements OnInit {
 
   fileComponents: Array<any> = []
 
+  hasNoFiles: boolean = true
+
   constructor(
     private ipfs: IpfsService,
     private resolver: ComponentFactoryResolver) {
 
     ipfs.onFileAdded.subscribe(data => {
+      this.hasNoFiles = false;
       this.listFile(data);
     });
 
