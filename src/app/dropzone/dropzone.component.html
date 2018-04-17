@@ -1,6 +1,11 @@
 <section id="dropzone">
   <div class="container">
     <div class="wrapper">
+      <div class="overlay {{ overlayClass }}" *ngIf="load">
+        <div class="load"><i class="fa fa-spinner"></i></div>
+        <h3>Connecting to IPFS <span class="ellipsis"></span></h3>
+        <p class="message {{ overlayMessageClass }}">{{ loadingMessage }}</p>
+      </div>
       <dropzone
         [message]="dzMessage"
         (error)="onUploadError($event)"

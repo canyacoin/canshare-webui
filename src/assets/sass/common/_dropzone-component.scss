@@ -1,11 +1,47 @@
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+@keyframes vanish {
+    to {
+      opacity: 0;
+    }
+}
+
 #dropzone {
+  margin-bottom: get-spacer(3);
   .wrapper {
     @include box-shadow-default;
     border-radius: $border-radius;
     background-color: white;
     padding: get-spacer(3);
+    position: relative;
   }
-  margin-bottom: get-spacer(3);
+  .overlay {
+    @include flex-column-center;
+    background-color: white;
+    text-align: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+  }
+  .load {
+    margin-bottom: get-spacer(3);
+    i {
+      animation: spin 2.5s infinite linear;
+      color: theme-color('primary');
+      font-size: $h2-font-size;
+    }
+  }
+  .vanish {
+    animation: vanish 2s linear;
+  }
 }
 
 .dropzone {

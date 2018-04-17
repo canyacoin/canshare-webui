@@ -19,11 +19,18 @@ export class IpfsService {
 
   files: Array<any> = []
 
+
+  onNodeReady: Subject<any> = new Subject<any>()
+
+  onNodeStart: Subject<any> = new Subject<any>()
+
+
   onFileUpload: Subject<any> = new Subject<any>()
 
   onFileUploadEnd: Subject<any> = new Subject<any>()
 
   onFileAdded: Subject<any> = new Subject<any>()
+
 
   fileProgressPerimeter: number = 131.95
 
@@ -31,6 +38,7 @@ export class IpfsService {
     node.on('ready', () => {
       console.log('Online status: ', node.isOnline() ? 'online' : 'offline');
       console.log(node);
+      this.onNodeReady.next(node.isOnline());
     });
     node.on('error', error => {
       console.log(error);

@@ -16,9 +16,47 @@ export class DropzoneComponent implements OnInit {
     <span class="btn btn-primary">Browse</span>
   `
 
-  constructor(private ipfs: IpfsService) {}
+  loadingMessages: Array<string> = [
+    'CANShare lets you upload files of any size of any type.',
+    'Files are uploaded permanently to the Interplanetary File System, IPFS',
+    'After a file is uploaded, copy the IPFS link to share it'
+  ]
+
+  loadingMessage: string
+
+  load: boolean = true
+
+  nodeIsReady: boolean = false
+
+  overlayMessageClass: string = ''
+
+  overlayClass: string = ''
+
+  constructor(private ipfs: IpfsService) {
+    ipfs.onNodeStart.subscribe(() => {
+
+    });
+
+    ipfs.onNodeReady.subscribe(isReady => {
+      this.nodeIsReady = isReady;
+    });
+  }
 
   ngOnInit() {
+    this.getNextMessage(0);
+  }
+
+  getNextMessage(i) {
+    if (this.nodeIsReady && i >= this.loadingMessages.length) {
+      this.load = false;
+      return;
+    }
+
+    this.loadingMessage = this.loadingMessages[i];
+
+    setTimeout(() => {
+      this.getNextMessage(++i);
+    }, 5000);
   }
 
   onUploadError($evt) {
