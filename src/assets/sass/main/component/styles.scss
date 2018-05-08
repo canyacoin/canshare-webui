@@ -36,6 +36,7 @@
 @import "./src/assets/sass/common/card";
 
 body {
+  background-color: $gray-100;
   position: relative;
 }
 
@@ -43,6 +44,10 @@ body {
   background-color: $gray-100;
   min-height: 100vh;
   padding-top: 112px;
+}
+
+#bancor-wc {
+  background-color: white;
 }
 
 .modal {
