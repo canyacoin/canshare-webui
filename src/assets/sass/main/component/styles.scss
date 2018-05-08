@@ -8,6 +8,7 @@
 @import "./node_modules/bootstrap/scss/bootstrap-grid";
 @import "./node_modules/bootstrap/scss/utilities";
 @import "./node_modules/bootstrap/scss/card";
+@import "./node_modules/bootstrap/scss/images";
 
 @import "./src/assets/sass/fontawesome/fontawesome";
 @import "./src/assets/sass/fontawesome/fa-brands";
@@ -37,4 +38,22 @@ body {
   background-color: $gray-100;
   min-height: 100vh;
   padding-top: 112px;
+}
+
+.modal {
+  @include flex-column-center;
+  background-color: rgba($black, 0.7);
+  position: fixed;
+  z-index: 100000;
+  height: 100%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  .modal-body {
+    border-radius: $border-radius-lg;
+    background-color: white;
+    padding: get-spacer(3);
+    min-height: 350px;
+  }
 }

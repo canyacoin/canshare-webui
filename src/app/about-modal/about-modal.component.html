@@ -1,0 +1,10 @@
+<div class="modal" *ngIf="display">
+  <div class="container">
+    <nav class="mb-3 text-right">
+      <button class="btn btn-outline btn-light" (click)="display = false">Close <i class="fa fa-times-circle"></i></button>
+    </nav>
+    <div class="modal-body" *ngIf="onAbout">
+      <img src="assets/img/IPFS-and-CanYa.png" alt="What is IPFS" class="img-fluid">
+    </div>
+  </div>
+</div>
