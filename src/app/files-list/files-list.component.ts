@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ComponentFactory, ComponentRef, Component
 import { IpfsService } from '../@services/ipfs.service';
 import { LocalStorageService } from '../@services/local-storage.service';
 import { FileComponent } from '../file/file.component';
+import { InfoService } from '../@services/info.service';
 
 @Component({
   selector: 'app-files-list',
@@ -20,7 +21,8 @@ export class FilesListComponent implements OnInit {
   constructor(
     private ipfs: IpfsService,
     private resolver: ComponentFactoryResolver,
-    private ls: LocalStorageService) {
+    private ls: LocalStorageService,
+    public info: InfoService) {
 
     ls.init();
 
