@@ -9,6 +9,9 @@
 @import "./node_modules/bootstrap/scss/utilities";
 @import "./node_modules/bootstrap/scss/card";
 @import "./node_modules/bootstrap/scss/images";
+@import "./node_modules/bootstrap/scss/nav";
+@import "./node_modules/bootstrap/scss/alert";
+@import "./node_modules/bootstrap/scss/close";
 
 @import "./src/assets/sass/fontawesome/fontawesome";
 @import "./src/assets/sass/fontawesome/fa-brands";
@@ -25,10 +28,12 @@
 @import "./src/assets/sass/theme/uikit/scroll";
 @import "./src/assets/sass/theme/uikit/nav";
 @import "./src/assets/sass/theme/layout/topbar";
+@import "./src/assets/sass/theme/uikit/alert";
 
 @import "./src/assets/sass/common/dropzone-component";
 @import "./src/assets/sass/common/files-list-component";
 @import "./src/assets/sass/common/file-component";
+@import "./src/assets/sass/common/card";
 
 body {
   position: relative;

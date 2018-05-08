@@ -5,10 +5,21 @@
 <main class="site-wrapper pb-3" role="main">
   <app-header></app-header>
 
+  <div class="container">
+    <div class="alert alert-info alert-dismissible fade show" role="alert" id="canshare-alert">
+      Send any file size, no sign up necessary!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="document.querySelector('#canshare-alert').remove()">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+  </div>
+
   <app-dropzone></app-dropzone>
 
   <app-files-list></app-files-list>
 
 </main>
+
+<app-cards></app-cards>
 
 <app-footer></app-footer>

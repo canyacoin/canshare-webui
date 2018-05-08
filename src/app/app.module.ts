@@ -15,6 +15,7 @@ import { IpfsService } from './@services/ipfs.service';
 import { InfoService } from './@services/info.service';
 import { LocalStorageService } from './@services/local-storage.service';
 import { AboutModalComponent } from './about-modal/about-modal.component';
+import { CardsComponent } from './cards/cards.component';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
@@ -32,7 +33,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     DropzoneComponent,
     FilesListComponent,
     FileComponent,
-    AboutModalComponent
+    AboutModalComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,

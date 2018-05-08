@@ -9,9 +9,18 @@
     </div>
 
     <div class="topbar-right d-print-none">
-      <nav>
-        <button class="btn btn-primary btn-outline" (click)="info.displayAboutModal()">About</button>
-      </nav>
+      <ul class="topbar-nav nav mr-3">
+        <li class="nav-item">
+          <a class="nav-link" href="https://blog.canya.com.au/" target="_blank">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://forum.canya.io" target="_blank">Forum</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://t.me/canyacoin" target="_blank">Telegram <i aria-hidden="true" class="fab fa-telegram"></i></a>
+        </li>
+      </ul>
+      <button class="btn btn-primary" (click)="info.displayAboutModal()">About</button>
     </div>
 
   </div>
