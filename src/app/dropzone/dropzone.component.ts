@@ -11,7 +11,7 @@ export class DropzoneComponent implements OnInit {
 
   dzMessage: string = `
     <i class="fa fa-cloud-upload-alt"></i>
-    <h4>Drag files to upload</h4>
+    <h4>Drag a file to upload</h4>
     <p>- or -</p>
     <span class="btn btn-primary">Browse</span>
   `
