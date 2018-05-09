@@ -1,4 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
+import { IpfsService } from '../@services/ipfs.service';
 
 declare var require: any;
 
@@ -26,7 +27,9 @@ export class FileComponent implements OnInit {
 
   ipfsHash: string
 
-  constructor(private zone: NgZone) {}
+  constructor(
+    private zone: NgZone,
+    public ipfs: IpfsService) {}
 
   ngOnInit() {
   }

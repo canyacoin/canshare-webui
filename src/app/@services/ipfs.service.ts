@@ -7,18 +7,20 @@ declare let require: any;
 const streamBuffers = require('stream-buffers');
 const IPFS = require('ipfs');
 const node = new IPFS({
-  repo: '../assets/ipfs'
+  repo: '../assets/ipfs',
 });
 
 @Injectable()
 export class IpfsService {
 
+  node: any
+
   progress: number = 0
 
   fileCount: number = -1
 
-  files: Array<any> = []
 
+  nodeIsReady: boolean = false
 
   onNodeReady: Subject<any> = new Subject<any>()
 
@@ -32,13 +34,16 @@ export class IpfsService {
   onFileAdded: Subject<any> = new Subject<any>()
 
 
-  fileProgressPerimeter: number = 131.95
+  fileProgressPerimeter: number = 135.95
 
   constructor() {
+    this.node = node;
+
     node.on('ready', () => {
       console.log('Online status: ', node.isOnline() ? 'online' : 'offline');
       console.log(node);
       this.onNodeReady.next(node.isOnline());
+      this.nodeIsReady = node.isOnline();
     });
     node.on('error', error => {
       console.log(error);
@@ -48,10 +53,26 @@ export class IpfsService {
     });
     node.on('start', () => {
       console.log('started IPFS');
+      console.log('Online status: ', node.isOnline() ? 'online' : 'offline');
     });
     node.on('stop', () => {
       console.log('stopped IPFS');
+      console.log('Online status: ', node.isOnline() ? 'online' : 'offline');
     });
+  }
+
+  start(){
+    if (!this.nodeIsReady) return;
+
+    if (this.node.isOnline()) return;
+
+    this.node.start();
+  }
+
+  stop(){
+    if (this.node && this.node.isOnline()) {
+      this.node.stop();
+    }
   }
 
   upload(fileContent, fileObj) {
@@ -65,20 +86,17 @@ export class IpfsService {
 
     stream.on('data', (ipfsFile) => {
       this.onFileUploadEnd.next({ ipfsFile, fileObj });
-
-      console.log(node);
     });
 
     myReadableStreamBuffer.on('data', (chunk) => {
       this.progress += chunk.byteLength;
 
-      let file = this.files[fileObj.index];
-      file.progress += chunk.byteLength;
-      file.pctg = (file.progress >= file.size) ?
+      fileObj.progress += chunk.byteLength;
+      fileObj.pctg = (fileObj.progress >= fileObj.size) ?
         0 :
-        this.fileProgressPerimeter - ((file.progress / file.size) * this.fileProgressPerimeter);
+        this.fileProgressPerimeter - ((fileObj.progress / fileObj.size) * this.fileProgressPerimeter);
 
-      this.onFileUpload.next(file);
+      this.onFileUpload.next(fileObj);
 
       myReadableStreamBuffer.resume();
     });
