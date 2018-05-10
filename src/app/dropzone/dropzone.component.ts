@@ -1,5 +1,6 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { IpfsService } from '../@services/ipfs.service';
+import { DropzoneComponent as Dropzone } from 'ngx-dropzone-wrapper';
 
 @Component({
   selector: 'app-dropzone',
@@ -9,9 +10,11 @@ import { IpfsService } from '../@services/ipfs.service';
 
 export class DropzoneComponent implements OnInit {
 
+  @ViewChild(Dropzone) dropzone: Dropzone;
+
   dzMessage: string = `
     <i class="fa fa-cloud-upload-alt"></i>
-    <h4>Drag a file to upload</h4>
+    <h4>Drag files to upload</h4>
     <p>- or -</p>
     <span class="btn btn-primary">Browse</span>
   `
@@ -51,8 +54,6 @@ export class DropzoneComponent implements OnInit {
   }
 
   onFileAdded(file, $evt?) {
-    console.log(file);
-
     let reader = new FileReader();
 
     reader.onloadend = () => {
@@ -65,7 +66,7 @@ export class DropzoneComponent implements OnInit {
         progress: 0,
       };
       this.ipfs.onFileAdded.next(fileObj);
-      this.ipfs.upload(reader.result, fileObj);
+      this.ipfs.queue(reader.result, fileObj);
     }
 
     reader.readAsArrayBuffer(file);

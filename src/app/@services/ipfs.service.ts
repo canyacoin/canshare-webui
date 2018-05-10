@@ -15,10 +15,12 @@ export class IpfsService {
 
   node: any
 
-  progress: number = 0
-
   fileCount: number = -1
 
+  files: Array<any> = []
+
+
+  fileIsUploading: boolean = false
 
   nodeIsReady: boolean = false
 
@@ -75,8 +77,16 @@ export class IpfsService {
     }
   }
 
-  upload(fileContent, fileObj) {
-    this.progress = 0;
+  queue(fileContent, fileObj){
+    this.files.push({ fileContent, fileObj });
+
+    if (this.fileIsUploading) return false;
+
+    this.upload(this.files.shift());
+  }
+
+  upload({fileContent, fileObj}) {
+    this.fileIsUploading = true;
 
     let myReadableStreamBuffer = new streamBuffers.ReadableStreamBuffer({
       chunkSize: 25000
@@ -89,8 +99,6 @@ export class IpfsService {
     });
 
     myReadableStreamBuffer.on('data', (chunk) => {
-      this.progress += chunk.byteLength;
-
       fileObj.progress += chunk.byteLength;
       fileObj.pctg = (fileObj.progress >= fileObj.size) ?
         0 :
@@ -107,8 +115,17 @@ export class IpfsService {
     myReadableStreamBuffer.stop();
 
     myReadableStreamBuffer.on('end', () => {
-      console.log('END');
       stream.end();
+
+      setTimeout(() => {
+        if (this.files.length <= 0) {
+          this.fileIsUploading = false;
+          console.log('END');
+          return false;
+        }
+
+        this.upload(this.files.shift());
+      }, 2000);
     });
 
     myReadableStreamBuffer.resume();

@@ -22,7 +22,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   url: '/upload',
   autoQueue: false,
   maxFilesize: 1000000000,
-  maxFiles: 1,
+  // maxFiles: 1,
+  uploadMultiple: true,
   acceptedFiles: null
 };
 
