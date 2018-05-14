@@ -1,12 +1,24 @@
 <article class="file">
   <div class="progress">
-    <svg class="svg" xmlns="http://www.w3.org/2000/svg">
-      <circle class="circle" r="21" cx="50%" cy="50%" fill="transparent" stroke-dasharray="0"></circle>
-      <circle class="bar" r="21" cx="50%" cy="50%" fill="transparent" [attr.stroke-dasharray]="ipfs.fileProgressPerimeter" [style.stroke-dashoffset]="pctg"></circle>
-    </svg>
+    <span [attr.width]="pctg"></span>
   </div>
   <div class="content">
     <span class="name">{{ name }}</span>
-    <div [innerHtml]="ipfsLink"></div>
+  </div>
+  <div class="cancel-upload" *ngIf="false">
+    <span class="text-danger">cancel upload</span>
+  </div>
+  <div class="file-size">
+    <span>350kb</span>
+  </div>
+  <div class="actions">
+    <div class="dropdown-wrapper">
+      <i class="fa fa-ellipsis-v"></i>
+      <div class="dropdown">
+        <span class="item">Copy file link</span>
+        <span class="item">Share by email</span>
+        <span class="item text-danger">Remove</span>
+      </div>
+    </div>
   </div>
 </article>

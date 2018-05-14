@@ -100,9 +100,7 @@ export class IpfsService {
 
     myReadableStreamBuffer.on('data', (chunk) => {
       fileObj.progress += chunk.byteLength;
-      fileObj.pctg = (fileObj.progress >= fileObj.size) ?
-        0 :
-        this.fileProgressPerimeter - ((fileObj.progress / fileObj.size) * this.fileProgressPerimeter);
+      fileObj.pctg = (fileObj.progress >= fileObj.size) ? 100 : (fileObj.progress / fileObj.size) * 100;
 
       this.onFileUpload.next(fileObj);
 

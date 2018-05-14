@@ -1,15 +1,80 @@
 .file {
   @include flex-row;
   background-color: white;
-  .progress,
-  .content {
+  position: relative;
+  .content,
+  .cancel-upload,
+  .file-size,
+  .actions {
     @include flex-column-center;
-    height: 70px;
+    padding-right: $container-fluid;
+    padding-left: $container-fluid;
+    height: 56px;
+  }
+  .content {
+    width: 60%;
+  }
+  .cancel-upload {
+    width: 30%;
+  }
+  .file-size {
+    width: 30%;
+  }
+  .actions {
+    i {
+      &:hover {
+        cursor: pointer;
+        color: $blue;
+      }
+    }
+    &:hover {
+      .dropdown {
+        display: block;
+      }
+    }
+  }
+  .dropdown-wrapper {
+    position: relative;
+    .dropdown {
+      background-color: white;
+      position: absolute;
+      text-align: center;
+      display: none;
+      width: 180px;
+      right: 12px;
+      z-index: 10;
+      top: 14px;
+      &.display {
+        display: block;
+      }
+    }
+    .item {
+      @include flex-column-center;
+      border-bottom: 1px solid $gray-100;
+      min-height: 35px;
+      display: block;
+      &:hover {
+        background-color: $gray-100;
+        cursor: pointer;
+      }
+    }
   }
   .progress {
-    @include flex-align-center;
-    flex-basis: 70px;
-    width: 70px;
+    background-color: $gray-300;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    right: 0;
+    left: 0;
+    top: 0;
+    > span {
+      background-color: $blue;
+      display: inline-block;
+      position: absolute;
+      height: 3px;
+      left: 0;
+      top: 0;
+    }
   }
   .content {
     width: 100%;
@@ -39,20 +104,6 @@
     }
     &.copied {
       background-color: $green;
-    }
-  }
-
-  .svg {
-    height: 100%;
-    width: 100%;
-    circle {
-      transition: stroke-dashoffset 1s linear;
-      stroke-dashoffset: 0;
-      stroke-width: 4px;
-      stroke: $gray-100;
-    }
-    .bar {
-      stroke: theme-color('primary');
     }
   }
 }
