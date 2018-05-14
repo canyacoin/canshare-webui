@@ -5,13 +5,13 @@
   <div class="content">
     <span class="name">{{ name }}</span>
   </div>
-  <div class="cancel-upload" *ngIf="false">
-    <span class="text-danger">cancel upload</span>
+  <div class="cancel-upload" *ngIf="isUploading">
+    <span class="text-danger" (click)="cancelUpload()">cancel upload</span>
   </div>
-  <div class="file-size">
-    <span>350kb</span>
+  <div class="file-size" *ngIf="!isUploading">
+    <span>{{ size }}</span>
   </div>
-  <div class="actions">
+  <div class="actions" *ngIf="!isUploading">
     <div class="dropdown-wrapper">
       <i class="fa fa-ellipsis-v"></i>
       <div class="dropdown">

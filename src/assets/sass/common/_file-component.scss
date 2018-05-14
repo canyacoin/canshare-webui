@@ -42,6 +42,7 @@
   .dropdown-wrapper {
     position: relative;
     .dropdown {
+      @include box-shadow-default;
       background-color: white;
       position: absolute;
       text-align: center;

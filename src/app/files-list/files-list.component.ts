@@ -4,6 +4,10 @@ import { LocalStorageService } from '../@services/local-storage.service';
 import { FileComponent } from '../file/file.component';
 import { InfoService } from '../@services/info.service';
 
+declare var require: any;
+
+const filesize = require('filesize');
+
 @Component({
   selector: 'app-files-list',
   templateUrl: './files-list.component.html',
@@ -47,6 +51,7 @@ export class FilesListComponent implements OnInit {
 
       fileComponent.ipfsHash = ipfsFile.hash;
       fileComponent.renderIpfsLink();
+      fileComponent.isUploading = false;
 
       this.storeFile({ipfsFile, fileObj});
     });
@@ -66,10 +71,11 @@ export class FilesListComponent implements OnInit {
       let fileObj = files[key];
       this.listFile(fileObj);
 
-      let fileComp = this.fileComponents[this.ipfs.fileCount].instance;
-      fileComp.ipfsHash = fileObj.hash;
-      fileComp.pctg = '100%';
-      fileComp.renderIpfsLink();
+      let fileComponent = this.fileComponents[this.ipfs.fileCount].instance;
+      fileComponent.ipfsHash = fileObj.hash;
+      fileComponent.pctg = '100%';
+      fileComponent.renderIpfsLink();
+      fileComponent.isUploading = false;
     });
   }
 
@@ -97,7 +103,7 @@ export class FilesListComponent implements OnInit {
 
     file.instance.name = data.name;
 
-    file.instance.size = data.size;
+    file.instance.size = filesize(data.size);
 
     file.instance.pctg = '0%';
 

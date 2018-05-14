@@ -27,12 +27,16 @@ export class FileComponent implements OnInit {
 
   ipfsHash: string
 
+  isUploading: boolean = true
+
   constructor(
     private zone: NgZone,
     public ipfs: IpfsService) {}
 
   ngOnInit() {
   }
+
+  cancelUpload(){}
 
   renderIpfsLink() {
     console.log(this.ipfsHash);
