@@ -1,3 +1,9 @@
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+  }
+}
+
 .file {
   @include flex-row;
   background-color: white;
@@ -74,6 +80,10 @@
       height: 3px;
       left: 0;
       top: 0;
+    }
+    &.fade-out {
+      animation: fadeOut 0.5s ease-in-out;
+      animation-fill-mode: forwards;
     }
   }
   .content {

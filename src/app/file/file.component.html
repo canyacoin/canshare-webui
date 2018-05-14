@@ -1,6 +1,6 @@
 <article class="file">
-  <div class="progress">
-    <span [attr.width]="pctg"></span>
+  <div class="progress {{pctg == '100%' ? 'fade-out' : ''}}">
+    <span [style.width]="pctg"></span>
   </div>
   <div class="content">
     <span class="name">{{ name }}</span>
@@ -15,7 +15,7 @@
     <div class="dropdown-wrapper">
       <i class="fa fa-ellipsis-v"></i>
       <div class="dropdown">
-        <span class="item">Copy file link</span>
+        <span class="item copy-{{ipfsHash}}">Copy file link</span>
         <span class="item">Share by email</span>
         <span class="item text-danger">Remove</span>
       </div>

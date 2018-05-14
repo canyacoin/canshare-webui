@@ -68,7 +68,7 @@ export class FilesListComponent implements OnInit {
 
       let fileComp = this.fileComponents[this.ipfs.fileCount].instance;
       fileComp.ipfsHash = fileObj.hash;
-      fileComp.pctg = 0;
+      fileComp.pctg = '100%';
       fileComp.renderIpfsLink();
     });
   }
@@ -82,7 +82,7 @@ export class FilesListComponent implements OnInit {
       size: ipfsFile.size,
       name: fileObj.name,
       type: fileObj.type,
-      pctg: 0,
+      pctg: '100%',
     }
 
     this.ls.store({ files });
@@ -99,7 +99,7 @@ export class FilesListComponent implements OnInit {
 
     file.instance.size = data.size;
 
-    file.instance.pctg = this.ipfs.fileProgressPerimeter;
+    file.instance.pctg = '0%';
 
     this.fileComponents.push(file);
   }

@@ -37,16 +37,18 @@ export class FileComponent implements OnInit {
   renderIpfsLink() {
     console.log(this.ipfsHash);
     let link = `https://gateway.ipfs.io/ipfs/${this.ipfsHash}`;
+
     this.ipfsLink = `<a href="${link}" target="_blank" class="link">${this.ipfsHash}</a> <span>-</span> <span class="copy copy-${this.ipfsHash}">copy</span>`;
+
     this.zone.run(() => console.log('field run'));
 
     new clipboard(`.copy-${this.ipfsHash}`, {
       text: function(trigger) {
 
-        trigger.innerText = 'copied!';
+        trigger.innerText = 'Copied!';
         trigger.classList.add('copied');
         setTimeout(() => {
-          trigger.innerText = 'copy';
+          trigger.innerText = 'Copy file link';
           trigger.classList.remove('copied');
         }, 2000);
 
