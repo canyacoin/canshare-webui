@@ -9,7 +9,7 @@ export class EmailService {
 
   appURL: string = 'http://localhost:4200'
 
-  entryPoint = 'https://us-central1-can-sign.cloudfunctions.net';
+  entryPoint = 'https://us-central1-canshare-app.cloudfunctions.net';
 
   constructor(private http: Http) { }
 
