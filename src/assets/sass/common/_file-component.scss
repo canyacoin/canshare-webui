@@ -6,6 +6,7 @@
 
 .file {
   @include flex-row;
+  border-bottom: 1px solid $gray-100;
   background-color: white;
   position: relative;
   .content,

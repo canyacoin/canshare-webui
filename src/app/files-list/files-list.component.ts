@@ -83,6 +83,7 @@ export class FilesListComponent implements OnInit {
     let files = this.ls.getFiles();
 
     files[ipfsFile.hash] = {
+      index: fileObj.index,
       hash: ipfsFile.hash,
       path: ipfsFile.path,
       size: ipfsFile.size,

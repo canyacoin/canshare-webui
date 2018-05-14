@@ -34,6 +34,7 @@
 @import "./src/assets/sass/common/files-list-component";
 @import "./src/assets/sass/common/file-component";
 @import "./src/assets/sass/common/card";
+@import "./src/assets/sass/common/forms";
 
 body {
   background-color: $gray-100;
@@ -65,5 +66,11 @@ body {
     background-color: white;
     padding: get-spacer(3);
     min-height: 350px;
+  }
+}
+
+#share-by-email-component {
+  .modal-body {
+    padding: get-spacer(5);
   }
 }

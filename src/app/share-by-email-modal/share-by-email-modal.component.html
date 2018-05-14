@@ -1,0 +1,38 @@
+<div class="modal" *ngIf="display" id="share-by-email-component">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <div class="modal-body" *ngIf="onBeforeSend">
+          <nav class="mb-3 text-right">
+            <button class="btn btn-outline btn-light" (click)="display = false">Close <i class="fa fa-times-circle"></i></button>
+          </nav>
+          <fieldset class="form-group">
+            <label for="to">Send to <span class="text-primary">*</span></label>
+            <input type="email" [(ngModel)]="to" name="to" class="form-control form-control-lg" placeholder="Recipient's email address here">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="from">From <span class="text-primary">*</span></label>
+            <input type="email" [(ngModel)]="from" name="from" class="form-control form-control-lg" placeholder="Your email address here">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="message">Message</label>
+            <textarea name="message" [(ngModel)]="message" class="form-control form-control-lg" placeholder="Enter your message"></textarea>
+          </fieldset>
+          <fieldset class="form-group text-center">
+            <button class="btn btn-primary btn-lg" (click)="send()">Send</button>
+          </fieldset>
+        </div>
+        <div class="modal-body" *ngIf="onSending">
+
+        </div>
+        <div class="modal-body" *ngIf="onAfterSend">
+          <div class="text-center">
+            <h1>Booyah!</h1>
+            <p>Send successful</p>
+            <img src="assets/img/paper-plane.png" alt="Paper Plane image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

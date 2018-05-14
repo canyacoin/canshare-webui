@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
@@ -14,8 +16,10 @@ import { FileComponent } from './file/file.component';
 import { IpfsService } from './@services/ipfs.service';
 import { InfoService } from './@services/info.service';
 import { LocalStorageService } from './@services/local-storage.service';
+import { EmailService } from './@services/email.service';
 import { AboutModalComponent } from './about-modal/about-modal.component';
 import { CardsComponent } from './cards/cards.component';
+import { ShareByEmailModalComponent } from './share-by-email-modal/share-by-email-modal.component';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
@@ -36,16 +40,20 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     FilesListComponent,
     FileComponent,
     AboutModalComponent,
-    CardsComponent
+    CardsComponent,
+    ShareByEmailModalComponent
   ],
   imports: [
     BrowserModule,
-    DropzoneModule
+    DropzoneModule,
+    FormsModule,
+    HttpModule,
   ],
   providers: [
     IpfsService,
     LocalStorageService,
     InfoService,
+    EmailService,
     {
       provide: DROPZONE_CONFIG,
       useValue: DEFAULT_DROPZONE_CONFIG,
