@@ -23,9 +23,12 @@
           </fieldset>
         </div>
         <div class="modal-body" *ngIf="onSending">
-
+          <h1>Sending...</h1>
         </div>
         <div class="modal-body" *ngIf="onAfterSend">
+          <nav class="mb-3 text-right">
+            <button class="btn btn-outline btn-light" (click)="display = false">Close <i class="fa fa-times-circle"></i></button>
+          </nav>
           <div class="text-center">
             <h1>Booyah!</h1>
             <p>Send successful</p>

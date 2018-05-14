@@ -52,6 +52,13 @@ export class ShareByEmailModalComponent implements OnInit {
       return filesIndexes.indexOf(file.index) != -1;
     });
 
+    this.info.onShareByEmail.next({
+      displayEmailModal: true,
+      onBeforeSend: false,
+      onSending: true,
+      onAfterSend: false,
+    });
+
     this.email.shareFiles(files, this.to, this.from, this.message);
   }
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { InfoService } from './info.service';
 
 declare let require: any;
 
@@ -11,7 +12,9 @@ export class EmailService {
 
   entryPoint = 'https://us-central1-canshare-app.cloudfunctions.net';
 
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    private info: InfoService) {}
 
   sendRequest(entryPoint: string, object: any) {
     console.log('sendRequest', object);
@@ -20,6 +23,12 @@ export class EmailService {
       .toPromise()
       .then((res: any) => {
         console.log(JSON.parse(res._body));
+        this.info.onShareByEmail.next({
+          displayEmailModal: true,
+          onBeforeSend: false,
+          onSending: false,
+          onAfterSend: true,
+        });
       })
       .catch(error => console.log(error));
   }
