@@ -12,4 +12,17 @@
       margin: 0;
     }
   }
+  .files-list-actions {
+    @include flex-row;
+    margin-bottom: get-spacer(4);
+    .form-group {
+      margin: 0;
+    }
+    .dropdown,
+    .files-count {
+      @include flex-column-center;
+      margin-right: get-spacer(2);
+      min-height: 42px;
+    }
+  }
 }

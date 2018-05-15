@@ -8,6 +8,10 @@ export class InfoService {
 
   onShareByEmail: Subject<any> = new Subject<any>()
 
+  onDeselectAll: Subject<any> = new Subject<any>()
+
+  selectedFiles: Array<any> = []
+
   constructor() { }
 
   displayAboutModal(){
@@ -15,6 +19,19 @@ export class InfoService {
       displayAboutModal: true,
       onAbout: true,
     });
+  }
+
+  deselectAll(){
+    this.onDeselectAll.next(this.selectedFiles);
+    this.selectedFiles = [];
+  }
+
+  selectFile(fileIndex: number){
+    this.selectedFiles.push(fileIndex);
+  }
+
+  deselectFile(fileIndex: number){
+    this.selectedFiles.splice(this.selectedFiles.indexOf(fileIndex), 1);
   }
 
   displayShareFileByEmailModal(filesIndexes){

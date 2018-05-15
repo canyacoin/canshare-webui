@@ -1,4 +1,4 @@
-<article class="file">
+<article (click)="onClick($event)" class="{{ isSelected ? 'is-selected' : '' }} file">
   <div class="progress {{pctg == '100%' ? 'fade-out' : ''}}">
     <span [style.width]="pctg"></span>
   </div>

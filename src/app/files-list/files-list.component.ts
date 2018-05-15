@@ -5,6 +5,8 @@ import { FileComponent } from '../file/file.component';
 import { InfoService } from '../@services/info.service';
 
 declare var require: any;
+declare var window: any;
+declare var document: any;
 
 const filesize = require('filesize');
 
@@ -22,6 +24,8 @@ export class FilesListComponent implements OnInit {
 
   hasNoFiles: boolean = false
 
+  filesListAction: string
+
   constructor(
     private ipfs: IpfsService,
     private resolver: ComponentFactoryResolver,
@@ -29,6 +33,12 @@ export class FilesListComponent implements OnInit {
     public info: InfoService) {
 
     ls.init();
+
+    info.onDeselectAll.subscribe(filesIndexes => {
+      this.fileComponents.forEach(comp => {
+        comp.instance.isSelected = false;
+      });
+    });
 
     ipfs.onFileAdded.subscribe(data => {
       this.hasNoFiles = false;
@@ -57,6 +67,15 @@ export class FilesListComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(){
+    const ESC_KEY = 27;
+    window.onkeyup = event => {
+      if (event.keyCode == ESC_KEY) {
+        this.info.deselectAll();
+      }
+    }
+  }
+
   ngOnInit() {
     let files = this.ls.getFiles();
 
@@ -77,6 +96,22 @@ export class FilesListComponent implements OnInit {
       fileComponent.renderIpfsLink();
       fileComponent.isUploading = false;
     });
+  }
+
+  onActionChange($event){
+    this.filesListAction = $event.target.value;
+  }
+
+  applyAction(){
+    console.log(this.filesListAction);
+
+    if (this.filesListAction === 'share-multiple-files') {
+      console.log('share');
+    }
+
+    if (this.filesListAction === 'remove-multiple-files') {
+      console.log('remove');
+    }
   }
 
   storeFile({ ipfsFile, fileObj }) {

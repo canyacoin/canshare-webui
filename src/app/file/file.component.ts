@@ -30,6 +30,8 @@ export class FileComponent implements OnInit {
 
   isUploading: boolean = true
 
+  isSelected: boolean = false
+
   constructor(
     private zone: NgZone,
     public ipfs: IpfsService,
@@ -39,6 +41,40 @@ export class FileComponent implements OnInit {
   }
 
   cancelUpload(){}
+
+  onClick($event){
+    if ($event.shiftKey) {
+      console.log('shift-key');
+    }
+
+    if ($event.ctrlKey || $event.metaKey) {
+      console.log('cmd-key');
+
+      if (this.isSelected) {
+        this.deselect();
+        return false;
+      }
+
+      this.select();
+
+      return false;
+    }
+
+    this.info.deselectAll();
+    this.select();
+  }
+
+  deselect(){
+    this.isSelected = false;
+
+    this.info.deselectFile(this.index);
+  }
+
+  select(){
+    this.isSelected = true;
+
+    this.info.selectFile(this.index);
+  }
 
   renderIpfsLink() {
     console.log(this.ipfsHash);
