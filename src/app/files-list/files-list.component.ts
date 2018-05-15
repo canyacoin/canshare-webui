@@ -107,6 +107,7 @@ export class FilesListComponent implements OnInit {
 
     if (this.filesListAction === 'share-multiple-files') {
       console.log('share');
+      this.info.displayShareFileByEmailModal(this.info.selectedFiles);
     }
 
     if (this.filesListAction === 'remove-multiple-files') {
