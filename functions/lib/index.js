@@ -16,15 +16,14 @@ exports.shareFiles = functions.https.onRequest((req, res) => {
             <p>${from} has shared these files with you via CanShare.io:</p>`;
         if (message) {
             html += `<h5>Message:</h5>
-            <p>${message}</p>
-            <br>`;
+            <p>${message}</p>`;
         }
-        html += `<table>
+        html += `<br><table>
             <tbody>`;
         files.forEach(file => {
             html += `<tr>
                 <td width="70%"><a href="https://gateway.ipfs.io/ipfs/${file.hash}">${file.name}</a></td>
-                <td width="30%" style="text-align:right;"><a href="https://gateway.ipfs.io/ipfs/${file.hash}" style="background-color:#33ccff;border:1px solid #33ccff;border-radius:3px;color:#ffffff;display:inline-block;font-family:'Open Sans','Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif,sans-serif;font-size:16px;line-height:44px;text-align:center;text-decoration:none;width:150px;-webkit-text-size-adjust:none;mso-hide:all;">View file</a></td>
+                <td width="30%" style="text-align:right;"><a href="https://gateway.ipfs.io/ipfs/${file.hash}" style="background-color:#33ccff;border:1px solid #33ccff;border-radius:3px;color:#ffffff;display:inline-block;font-family:'Open Sans','Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif,sans-serif;font-size:16px;line-height:32px;text-align:center;text-decoration:none;width:150px;-webkit-text-size-adjust:none;mso-hide:all;">View file</a></td>
               </tr>`;
         });
         html += `</tbody>
