@@ -9,10 +9,12 @@
           <fieldset class="form-group">
             <label for="to">Send to <span class="text-primary">*</span></label>
             <input type="email" [(ngModel)]="to" name="to" class="form-control form-control-lg" placeholder="Recipient's email address here">
+            <small class="text-danger" *ngIf="!isValidToEmail">{{ invalidToEmailMessage }}</small>
           </fieldset>
           <fieldset class="form-group">
             <label for="from">From <span class="text-primary">*</span></label>
             <input type="email" [(ngModel)]="from" name="from" class="form-control form-control-lg" placeholder="Your email address here">
+            <small class="text-danger" *ngIf="!isValidFromEmail">{{ invalidFromEmailMessage }}</small>
           </fieldset>
           <fieldset class="form-group">
             <label for="message">Message</label>

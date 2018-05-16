@@ -6,6 +6,7 @@ import { EmailService } from '../@services/email.service';
 declare var require: any;
 
 const _ = require('lodash');
+const validator = require('validator');
 
 @Component({
   selector: 'app-share-by-email-modal',
@@ -26,6 +27,11 @@ export class ShareByEmailModalComponent implements OnInit {
   @Input() from: string
   @Input() message: string
 
+  isValidToEmail: boolean = true
+  invalidToEmailMessage: string = ''
+  isValidFromEmail: boolean = true
+  invalidFromEmailMessage: string = ''
+
   constructor(
     public info: InfoService,
     private ls: LocalStorageService,
@@ -45,6 +51,14 @@ export class ShareByEmailModalComponent implements OnInit {
   }
 
   send(){
+    if (!this._isValidToEmail()) return false;
+    this.isValidToEmail = true
+    this.invalidToEmailMessage = ''
+
+    if (!this._isValidFromEmail()) return false;
+    this.isValidFromEmail = true
+    this.invalidFromEmailMessage = ''
+
     let filesIndexes = this.filesIndexes;
     let files = this.ls.getFiles();
 
@@ -60,6 +74,28 @@ export class ShareByEmailModalComponent implements OnInit {
     });
 
     this.email.shareFiles(files, this.to, this.from, this.message);
+  }
+
+  _isValidToEmail(): boolean {
+    if (typeof this.to != 'string' || !validator.isEmail(this.to)) {
+      this.isValidToEmail = false;
+      this.invalidToEmailMessage = 'Email is not a valid email address';
+
+      return false;
+    }
+
+    return true;
+  }
+
+  _isValidFromEmail(): boolean {
+    if (typeof this.from != 'string' || !validator.isEmail(this.from)) {
+      this.isValidFromEmail = false;
+      this.invalidFromEmailMessage = 'Email is not a valid email address';
+
+      return false;
+    }
+
+    return true;
   }
 
 }

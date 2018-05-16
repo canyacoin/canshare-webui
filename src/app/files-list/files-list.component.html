@@ -10,7 +10,7 @@
             <option value="remove-multiple-files">Remove</option>
           </select>
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary btn-sm" type="button" (click)="applyAction()">Apply</button>
+            <button class="btn btn-outline-secondary btn-sm" type="button" (click)="applyAction()" [disabled]="info.selectedFiles.length <= 0">Apply</button>
           </div>
         </div>
       </div>
