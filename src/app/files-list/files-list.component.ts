@@ -130,6 +130,7 @@ export class FilesListComponent implements OnInit {
 
     if (this.filesListAction === 'remove-multiple-files') {
       console.log('remove');
+      this.info.removeFiles(this.info.selectedFiles);
     }
   }
 

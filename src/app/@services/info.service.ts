@@ -38,6 +38,7 @@ export class InfoService {
 
   removeFiles(filesIndexes){
     this.onRemoveFiles.next(filesIndexes);
+    this.selectedFiles = [];
   }
 
   displayShareFileByEmailModal(filesIndexes){
