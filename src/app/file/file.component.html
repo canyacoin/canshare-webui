@@ -17,7 +17,7 @@
       <div class="dropdown">
         <span class="item copy-{{ipfsHash}}">Copy file link</span>
         <span class="item" (click)="info.displayShareFileByEmailModal([index])">Share by email</span>
-        <span class="item text-danger">Remove</span>
+        <span class="item text-danger" (click)="info.removeFiles([index])">Remove</span>
       </div>
     </div>
   </div>

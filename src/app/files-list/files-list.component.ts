@@ -9,6 +9,7 @@ declare var window: any;
 declare var document: any;
 
 const filesize = require('filesize');
+const _ = require('lodash');
 
 @Component({
   selector: 'app-files-list',
@@ -33,6 +34,23 @@ export class FilesListComponent implements OnInit {
     public info: InfoService) {
 
     ls.init();
+
+    info.onRemoveFiles.subscribe(filesIndexes => {
+      let files = ls.getFiles();
+
+      filesIndexes.forEach(index => {
+        _.remove(this.fileComponents, comp => {
+          if (comp.instance.index == index) {
+            delete files[comp.instance.ipfsHash];
+            comp.destroy();
+          }
+
+          return comp.instance.index == index;
+        });
+      });
+
+      ls.store({ files });
+    });
 
     info.onDeselectAll.subscribe(filesIndexes => {
       this.fileComponents.forEach(comp => {

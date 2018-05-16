@@ -10,6 +10,8 @@ export class InfoService {
 
   onDeselectAll: Subject<any> = new Subject<any>()
 
+  onRemoveFiles: Subject<any> = new Subject<any>()
+
   selectedFiles: Array<any> = []
 
   constructor() { }
@@ -32,6 +34,10 @@ export class InfoService {
 
   deselectFile(fileIndex: number){
     this.selectedFiles.splice(this.selectedFiles.indexOf(fileIndex), 1);
+  }
+
+  removeFiles(filesIndexes){
+    this.onRemoveFiles.next(filesIndexes);
   }
 
   displayShareFileByEmailModal(filesIndexes){
