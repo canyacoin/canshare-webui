@@ -1,16 +1,23 @@
 <section id="files-list">
   <div class="container">
 
-    <div class="files-list-actions">
-      <div class="dropdown">
-        <div class="input-group">
-          <select name="files-list-actions" class="custom-select form-control form-control-sm" (change)="onActionChange($event)">
-            <option value="">Select an action</option>
-            <option value="share-multiple-files">Share by email</option>
-            <option value="remove-multiple-files">Remove</option>
-          </select>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary btn-sm" type="button" (click)="applyAction()" [disabled]="info.selectedFiles.length <= 0">Apply</button>
+    <div class="files-list-bar">
+      <div class="actions-dropdown">
+        <div class="title">
+          <span>Actions <i class="fa fa-chevron-down"></i></span>
+        </div>
+        <div class="files-list-actions">
+          <div
+            class="action {{ (info.selectedFiles.length <= 0) ? 'disabled' : '' }}"
+            (click)="applyAction('share-multiple-files')"
+            data-toggle="tooltip" data-placement="right" title="" data-original-title="Share via email with a link attached for easy share and download.">
+            <span>Share by email</span>
+          </div>
+          <div
+            class="action text-danger {{ (info.selectedFiles.length <= 0) ? 'disabled' : '' }}"
+            (click)="applyAction('remove-multiple-files')"
+            data-toggle="tooltip" data-placement="right" title="" data-original-title="NOTE: Files cannot be removed from IPFS once they have been uploaded.">
+            <span>Remove</span>
           </div>
         </div>
       </div>

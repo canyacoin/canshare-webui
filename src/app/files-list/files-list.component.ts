@@ -116,19 +116,15 @@ export class FilesListComponent implements OnInit {
     });
   }
 
-  onActionChange($event){
-    this.filesListAction = $event.target.value;
-  }
+  applyAction(action: string){
+    if (this.info.selectedFiles.length <= 0) return false;
 
-  applyAction(){
-    console.log(this.filesListAction);
-
-    if (this.filesListAction === 'share-multiple-files') {
+    if (action === 'share-multiple-files') {
       console.log('share');
       this.info.displayShareFileByEmailModal(this.info.selectedFiles);
     }
 
-    if (this.filesListAction === 'remove-multiple-files') {
+    if (action === 'remove-multiple-files') {
       console.log('remove');
       this.info.removeFiles(this.info.selectedFiles);
     }

@@ -12,13 +12,52 @@
       margin: 0;
     }
   }
-  .files-list-actions {
+  .files-list-bar {
     @include flex-row;
     margin-bottom: get-spacer(4);
-    .form-group {
-      margin: 0;
+    .actions-dropdown,
+    .files-count {
+      margin-right: get-spacer(3);
     }
-    .dropdown,
+    .actions-dropdown {
+      position: relative;
+      &:hover {
+        .files-list-actions {
+          display: block;
+        }
+      }
+      .title {
+        @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
+        background-color: white;
+        span {}
+      }
+      .files-list-actions {
+        @include box-shadow-default;
+        background-color: white;
+        position: absolute;
+        min-width: 150px;
+        display: none;
+        z-index: 10;
+        width: 100%;
+        top: 100%;
+        left: 0;
+      }
+      .action {
+        @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
+        border-bottom: 1px solid $gray-100;
+        text-align: center;
+        &.disabled {
+          &:hover {
+            cursor: not-allowed;
+          }
+        }
+        &:hover {
+          background-color: $gray-100;
+          cursor: pointer;
+        }
+        span {}
+      }
+    }
     .files-count {
       @include flex-column-center;
       margin-right: get-spacer(2);
