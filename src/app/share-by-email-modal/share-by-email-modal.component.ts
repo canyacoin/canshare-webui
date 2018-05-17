@@ -54,21 +54,11 @@ export class ShareByEmailModalComponent implements OnInit {
   }
 
   send(){
-    this.validateToEmails(this.to.split(','));
+    let validations = this.to.split(',').map(email => {
+      return this.validateToEmails(email);
+    });
 
-    this.onValidateToEmail.subscribe(data => {
-
-      if (!data.isValid) {
-        this.isValidToEmail = false;
-        this.invalidToEmailMessage = 'Email is not a valid email address';
-        return false;
-      }
-
-      if (data.emails.length > 0) {
-        this.validateToEmails(data.emails);
-        return true;
-      }
-
+    Promise.all(validations).then(() => {
       this.isValidToEmail = true
       this.invalidToEmailMessage = ''
 
@@ -91,17 +81,17 @@ export class ShareByEmailModalComponent implements OnInit {
       });
 
       this.email.shareFiles(files, this.to, this.from, this.message);
+    }).catch(email => {
+      this.isValidToEmail = false;
+      this.invalidToEmailMessage = `${email} is not a valid email address`;
+      return false;
     });
   }
 
-  validateToEmails(emails: Array<string>){
-    let email = emails[0].replace(/\s/g,'');
-
-    emails.pop();
-
-    this.onValidateToEmail.next({
-      emails: emails,
-      isValid: typeof email == 'string' && validator.isEmail(email),
+  validateToEmails(_email: string){
+    let email = _email.replace(/\s/g,'');
+    return new Promise((resolve, reject) => {
+      return (typeof email == 'string' && validator.isEmail(email)) ? resolve() : reject(email);
     });
   }
 

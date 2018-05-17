@@ -9,7 +9,7 @@ sgMail.setApiKey(SENDGRID_API_KEY);
 exports.shareFiles = functions.https.onRequest((req, res) => {
     cors(req, res, () => {
         let files = req.body.files;
-        let to = req.body.to;
+        let to = req.body.to.split(',').map(email => email.replace(/\s/g, ''));
         let from = req.body.from;
         let message = req.body.message;
         let html = `<h3>Hi There!</h3><br>
@@ -30,7 +30,7 @@ exports.shareFiles = functions.https.onRequest((req, res) => {
             <table>
             <br><br><br><p>The CanYa Team</p>`;
         let msg = {
-            to: to.split(','),
+            to: to,
             from: from,
             subject: 'Your files via CanShare.io',
             html: html,
@@ -39,7 +39,7 @@ exports.shareFiles = functions.https.onRequest((req, res) => {
         sgMail.send(msg);
         res.status(200).json({
             files: files,
-            to: to.split(','),
+            to: to,
             from: from,
             message: message,
             msg: msg
