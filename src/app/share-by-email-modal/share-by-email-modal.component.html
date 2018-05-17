@@ -8,7 +8,7 @@
           </nav>
           <fieldset class="form-group">
             <label for="to">Send to <span class="text-primary">*</span></label>
-            <input type="email" [(ngModel)]="to" name="to" class="form-control form-control-lg" placeholder="Recipient's email address here">
+            <input type="email" [(ngModel)]="to" name="to" class="form-control form-control-lg" placeholder="Comma separated recipients' email addresses">
             <small class="text-danger" *ngIf="!isValidToEmail">{{ invalidToEmailMessage }}</small>
           </fieldset>
           <fieldset class="form-group">

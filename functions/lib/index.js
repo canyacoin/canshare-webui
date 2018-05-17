@@ -30,7 +30,7 @@ exports.shareFiles = functions.https.onRequest((req, res) => {
             <table>
             <br><br><br><p>The CanYa Team</p>`;
         let msg = {
-            to: to,
+            to: to.split(','),
             from: from,
             subject: 'Your files via CanShare.io',
             html: html,
@@ -39,7 +39,7 @@ exports.shareFiles = functions.https.onRequest((req, res) => {
         sgMail.send(msg);
         res.status(200).json({
             files: files,
-            to: to,
+            to: to.split(','),
             from: from,
             message: message,
             msg: msg
