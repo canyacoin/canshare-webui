@@ -3,6 +3,7 @@ import { IpfsService } from '../@services/ipfs.service';
 import { InfoService } from '../@services/info.service';
 
 declare var require: any;
+declare var window: any;
 
 const clipboard = require('clipboard');
 
@@ -38,6 +39,10 @@ export class FileComponent implements OnInit {
     public info: InfoService) {}
 
   ngOnInit() {
+  }
+
+  ngAfterViewChecked(){
+    window.$('[data-toggle="tooltip"]').tooltip();
   }
 
   cancelUpload(){}
