@@ -16,8 +16,8 @@
       <i class="fa fa-ellipsis-v"></i>
       <div class="dropdown">
         <span class="item copy-{{ipfsHash}}">Copy file link</span>
-        <span class="item" (click)="info.displayShareFileByEmailModal([index])">Share by email</span>
-        <span class="item text-danger" (click)="info.removeFiles([index])">Remove</span>
+        <span class="item" (click)="info.displayShareFileByEmailModal([index])" data-toggle="tooltip" data-placement="right" title="" data-original-title="Share via email with a link attached for easy share and download.">Share by email</span>
+        <span class="item text-danger" (click)="info.removeFiles([index])" data-toggle="tooltip" data-placement="right" title="" data-original-title="NOTE: Files cannot be removed from IPFS once they have been uploaded.">Remove</span>
       </div>
     </div>
   </div>

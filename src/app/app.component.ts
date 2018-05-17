@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 declare var BancorConvertWidget: any;
+declare var window: any;
 
 @Component({
   selector: 'app-root',
@@ -19,5 +20,7 @@ export class AppComponent {
       'primaryColor': '#00BFFF',
       'primaryColorHover': '55DAFB'
     });
+
+    window.$('[data-toggle="tooltip"]').tooltip();
   }
 }
