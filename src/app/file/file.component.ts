@@ -25,7 +25,7 @@ export class FileComponent implements OnInit {
 
   progress: number
 
-  ipfsLink: string = '<span class="link-placeholder">[ipfs link will appear here]</span>'
+  ipfsLink: string
 
   ipfsHash: string
 
@@ -83,9 +83,10 @@ export class FileComponent implements OnInit {
 
   renderIpfsLink() {
     console.log(this.ipfsHash);
-    let link = `https://gateway.ipfs.io/ipfs/${this.ipfsHash}`;
 
-    this.ipfsLink = `<a href="${link}" target="_blank" class="link">${this.ipfsHash}</a> <span>-</span> <span class="copy copy-${this.ipfsHash}">copy</span>`;
+    let link = `${this.ipfs.gatewayURL}/${this.ipfsHash}`;
+
+    this.ipfsLink = link;
 
     this.zone.run(() => console.log('field run'));
 

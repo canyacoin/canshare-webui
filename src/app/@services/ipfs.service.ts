@@ -5,10 +5,9 @@ import { Buffer } from 'buffer';
 declare let require: any;
 
 const streamBuffers = require('stream-buffers');
-const IPFS = require('ipfs');
-const node = new IPFS({
-  repo: '../assets/ipfs',
-});
+
+const ipfsAPI = require('ipfs-api');
+const ipfs = ipfsAPI({host: 'ipfs.infura.io', port: '5001', protocol: 'https'});
 
 @Injectable()
 export class IpfsService {
@@ -36,46 +35,12 @@ export class IpfsService {
   onFileAdded: Subject<any> = new Subject<any>()
 
 
+  gatewayURL: string = 'https://ipfs.infura.io/ipfs'
+
+
   fileProgressPerimeter: number = 135.95
 
-  constructor() {
-    this.node = node;
-
-    node.on('ready', () => {
-      console.log('Online status: ', node.isOnline() ? 'online' : 'offline');
-      console.log(node);
-      this.onNodeReady.next(node.isOnline());
-      this.nodeIsReady = node.isOnline();
-    });
-    node.on('error', error => {
-      console.log(error);
-    });
-    node.on('init', () => {
-      console.log('init IPFS');
-    });
-    node.on('start', () => {
-      console.log('started IPFS');
-      console.log('Online status: ', node.isOnline() ? 'online' : 'offline');
-    });
-    node.on('stop', () => {
-      console.log('stopped IPFS');
-      console.log('Online status: ', node.isOnline() ? 'online' : 'offline');
-    });
-  }
-
-  start(){
-    if (!this.nodeIsReady) return;
-
-    if (this.node.isOnline()) return;
-
-    this.node.start();
-  }
-
-  stop(){
-    if (this.node && this.node.isOnline()) {
-      this.node.stop();
-    }
-  }
+  constructor() {}
 
   queue(fileContent, fileObj){
     this.files.push({ fileContent, fileObj });
@@ -92,7 +57,7 @@ export class IpfsService {
       chunkSize: 25000
     });
 
-    let stream = node.files.addReadableStream();
+    let stream = ipfs.addReadableStream();
 
     stream.on('data', (ipfsFile) => {
       this.onFileUploadEnd.next({ ipfsFile, fileObj });

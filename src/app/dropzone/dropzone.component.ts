@@ -43,6 +43,7 @@ export class DropzoneComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.ipfs.onNodeReady.next(true);
   }
 
   onUploadError($evt) {
