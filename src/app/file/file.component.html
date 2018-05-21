@@ -6,7 +6,7 @@
     <span class="name">{{ name }}</span>
   </div>
   <div class="cancel-upload" *ngIf="isUploading">
-    <span class="text-danger" (click)="cancelUpload()">cancel upload</span>
+    <!-- <span class="text-danger" (click)="cancelUpload()">cancel upload</span> -->
   </div>
   <div class="file-size" *ngIf="!isUploading">
     <span>{{ size }}</span>
