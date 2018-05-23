@@ -6,6 +6,7 @@ const sgMail = require('@sendgrid/mail');
 const _ = require('lodash');
 const SENDGRID_API_KEY = functions.config().sendgrid.key;
 sgMail.setApiKey(SENDGRID_API_KEY);
+const ipfsGatewayURL = 'https://ipfs.infura.io/ipfs';
 exports.shareFiles = functions.https.onRequest((req, res) => {
     cors(req, res, () => {
         let files = req.body.files;
@@ -22,8 +23,8 @@ exports.shareFiles = functions.https.onRequest((req, res) => {
             <tbody>`;
         files.forEach(file => {
             html += `<tr>
-                <td width="70%"><a href="https://gateway.ipfs.io/ipfs/${file.hash}">${file.name}</a></td>
-                <td width="30%" style="text-align:right;"><a href="https://gateway.ipfs.io/ipfs/${file.hash}" style="background-color:#33ccff;border:1px solid #33ccff;border-radius:3px;color:#ffffff;display:inline-block;font-family:'Open Sans','Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif,sans-serif;font-size:16px;line-height:32px;text-align:center;text-decoration:none;width:150px;-webkit-text-size-adjust:none;mso-hide:all;">View file</a></td>
+                <td width="70%"><a href="${ipfsGatewayURL}/${file.hash}">${file.name}</a></td>
+                <td width="30%" style="text-align:right;"><a href="${ipfsGatewayURL}/${file.hash}" style="background-color:#33ccff;border:1px solid #33ccff;border-radius:3px;color:#ffffff;display:inline-block;font-family:'Open Sans','Helvetica Neue','Helvetica',Helvetica,Arial,sans-serif,sans-serif;font-size:16px;line-height:32px;text-align:center;text-decoration:none;width:150px;-webkit-text-size-adjust:none;mso-hide:all;">View file</a></td>
               </tr>`;
         });
         html += `</tbody>
@@ -45,6 +46,5 @@ exports.shareFiles = functions.https.onRequest((req, res) => {
             msg: msg
         });
     });
-    // res.status(200).json({ success: true });
 });
 //# sourceMappingURL=index.js.map
