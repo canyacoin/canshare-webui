@@ -40,7 +40,8 @@ export class FilesListComponent implements OnInit {
 
       filesIndexes.forEach(index => {
         _.remove(this.fileComponents, comp => {
-          if (comp.instance.index == index) {
+          console.log(index, comp.instance.ipfsHash)
+          if (comp.instance.ipfsHash == index) {
             delete files[comp.instance.ipfsHash];
             comp.destroy();
           }

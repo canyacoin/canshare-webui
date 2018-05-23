@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { InfoService } from './@services/info.service';
+import { LocalStorageService } from './@services/local-storage.service';
+import { IpfsService } from './@services/ipfs.service';
 
 declare var BancorConvertWidget: any;
 declare var window: any;
@@ -9,8 +13,13 @@ declare var window: any;
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
+
+  constructor(){}
+
+  ngOnInit(){
+  }
 
   ngAfterViewInit() {
     BancorConvertWidget.init({

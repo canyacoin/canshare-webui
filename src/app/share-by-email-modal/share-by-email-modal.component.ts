@@ -70,7 +70,7 @@ export class ShareByEmailModalComponent implements OnInit {
       let files = this.ls.getFiles();
 
       files = _.filter(files, file => {
-        return filesIndexes.indexOf(file.index) != -1;
+        return filesIndexes.indexOf(file.hash) != -1;
       });
 
       this.info.onShareByEmail.next({

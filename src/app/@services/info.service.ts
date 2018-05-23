@@ -28,11 +28,11 @@ export class InfoService {
     this.selectedFiles = [];
   }
 
-  selectFile(fileIndex: number){
+  selectFile(fileIndex: string){
     this.selectedFiles.push(fileIndex);
   }
 
-  deselectFile(fileIndex: number){
+  deselectFile(fileIndex: string){
     this.selectedFiles.splice(this.selectedFiles.indexOf(fileIndex), 1);
   }
 

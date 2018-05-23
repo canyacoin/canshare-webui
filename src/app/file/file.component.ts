@@ -72,13 +72,13 @@ export class FileComponent implements OnInit {
   deselect(){
     this.isSelected = false;
 
-    this.info.deselectFile(this.index);
+    this.info.deselectFile(this.ipfsHash);
   }
 
   select(){
     this.isSelected = true;
 
-    this.info.selectFile(this.index);
+    this.info.selectFile(this.ipfsHash);
   }
 
   renderIpfsLink() {

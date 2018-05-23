@@ -20,6 +20,8 @@ import { EmailService } from './@services/email.service';
 import { AboutModalComponent } from './about-modal/about-modal.component';
 import { CardsComponent } from './cards/cards.component';
 import { ShareByEmailModalComponent } from './share-by-email-modal/share-by-email-modal.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ShareComponent } from './share/share.component';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
@@ -41,13 +43,15 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     FileComponent,
     AboutModalComponent,
     CardsComponent,
-    ShareByEmailModalComponent
+    ShareByEmailModalComponent,
+    ShareComponent,
   ],
   imports: [
     BrowserModule,
     DropzoneModule,
     FormsModule,
     HttpModule,
+    AppRoutingModule,
   ],
   providers: [
     IpfsService,
