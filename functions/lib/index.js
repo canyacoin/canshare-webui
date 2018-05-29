@@ -29,7 +29,8 @@ exports.shareFiles = functions.https.onRequest((req, res) => {
         });
         html += `</tbody>
             <table>
-            <br><br><br><p>The CanYa Team</p>`;
+            <br><br><br><p>The CanYa Team</p>
+            <br><br><p>Send any file size, no sign up necessary! | <a href="https://canshare.io">canshare.io</a></p>`;
         let msg = {
             to: to,
             from: from,
