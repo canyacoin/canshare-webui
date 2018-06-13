@@ -34,6 +34,8 @@ export class IpfsService {
 
   onFileAdded: Subject<any> = new Subject<any>()
 
+  onStreamEnd: Subject<any> = new Subject<any>()
+
 
   gatewayURL: string = 'https://ipfs.infura.io/ipfs'
 
@@ -79,6 +81,7 @@ export class IpfsService {
 
     myReadableStreamBuffer.on('end', () => {
       stream.end();
+      this.onStreamEnd.next(fileObj)
 
       setTimeout(() => {
         if (this.files.length <= 0) {

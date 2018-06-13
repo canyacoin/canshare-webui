@@ -10,8 +10,8 @@ export class EmailService {
 
   appURL: string = 'http://localhost:4200'
 
-  // entryPoint = 'https://us-central1-canshare-app.cloudfunctions.net';
-  entryPoint = 'https://us-central1-canshare-dev.cloudfunctions.net';
+  entryPoint = 'https://us-central1-canshare-app.cloudfunctions.net';
+  // entryPoint = 'https://us-central1-canshare-dev.cloudfunctions.net';
 
   constructor(
     private http: Http,

@@ -1,3 +1,9 @@
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: .1; }
+  100% { opacity: 1; }
+}
+
 @keyframes fadeOut {
   100% {
     opacity: 0;
@@ -20,6 +26,7 @@
   .content,
   .cancel-upload,
   .file-size,
+  .still-working,
   .actions {
     @include flex-column-center;
     padding-right: $container-fluid;
@@ -28,6 +35,11 @@
   }
   .content {
     width: 60%;
+  }
+  .still-working {
+    animation: flash linear 1.5s infinite;
+    color: $gray-500;
+    width: 30%;
   }
   .cancel-upload {
     width: 30%;

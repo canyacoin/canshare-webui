@@ -27,7 +27,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
   url: '/upload',
   autoQueue: false,
-  maxFilesize: 1000000000,
+  maxFilesize: 20000000000,
   // maxFiles: 1,
   uploadMultiple: true,
   acceptedFiles: null

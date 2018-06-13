@@ -5,13 +5,16 @@
   <div class="content">
     <span class="name">{{ name }}</span>
   </div>
+  <div class="still-working" *ngIf="isUploading">
+    <em *ngIf="streamEnded">still working...</em>
+  </div>
   <div class="cancel-upload" *ngIf="isUploading">
     <!-- <span class="text-danger" (click)="cancelUpload()">cancel upload</span> -->
   </div>
   <div class="file-size" *ngIf="!isUploading">
     <span>{{ size }}</span>
   </div>
-  <div class="actions" *ngIf="!isUploading">
+  <div class="actions" *ngIf="!isUploading && !streamEnded">
     <div class="dropdown-wrapper">
       <i class="fa fa-ellipsis-v"></i>
       <div class="dropdown">

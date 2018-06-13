@@ -27,6 +27,8 @@ export class FilesListComponent implements OnInit {
 
   filesListAction: string
 
+  uploadEnded: boolean = false
+
   constructor(
     private ipfs: IpfsService,
     private resolver: ComponentFactoryResolver,
@@ -60,15 +62,22 @@ export class FilesListComponent implements OnInit {
     });
 
     ipfs.onFileAdded.subscribe(data => {
-      this.hasNoFiles = false;
-      this.listFile(data);
+      this.hasNoFiles = false
+      this.uploadEnded = false
+      this.listFile(data)
     });
 
     ipfs.onFileUpload.subscribe(data => {
       this.fileComponents[data.index].instance.pctg = data.pctg;
     });
 
+    ipfs.onStreamEnd.subscribe(data => {
+      this.fileComponents[data.index].instance.streamEnded = true
+    })
+
     ipfs.onFileUploadEnd.subscribe(({ ipfsFile, fileObj }) => {
+      if (this.uploadEnded) return false
+
       let fileComponent = this.fileComponents[fileObj.index].instance;
 
       let fileExists = this.ls.getFile(ipfsFile.hash);
@@ -78,11 +87,13 @@ export class FilesListComponent implements OnInit {
         return false;
       }
 
-      fileComponent.ipfsHash = ipfsFile.hash;
-      fileComponent.renderIpfsLink();
-      fileComponent.isUploading = false;
+      fileComponent.ipfsHash = ipfsFile.hash
+      fileComponent.renderIpfsLink()
+      fileComponent.isUploading = false
+      fileComponent.streamEnded = false
 
-      this.storeFile({ipfsFile, fileObj});
+      this.uploadEnded = true
+      this.storeFile({ipfsFile, fileObj})
     });
   }
 
