@@ -44,6 +44,7 @@ export class FilesListComponent implements OnInit {
         _.remove(this.fileComponents, comp => {
           console.log(index, comp.instance.ipfsHash)
           if (comp.instance.ipfsHash == index) {
+            window.$(comp.location.nativeElement).find('[data-toggle="tooltip"]').tooltip('dispose')
             delete files[comp.instance.ipfsHash];
             comp.destroy();
           }
