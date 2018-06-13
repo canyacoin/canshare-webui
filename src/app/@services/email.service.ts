@@ -34,11 +34,12 @@ export class EmailService {
       .catch(error => console.log(error));
   }
 
-  shareFiles(files: Array<any>, to: string, from: string, message?: string){
+  shareFiles(files: Array<any>, to: string, from: string, subject?: string, message?: string){
     let req = {
       files: files,
       to: to,
       from: from,
+      subject: subject,
       message: message,
     };
 

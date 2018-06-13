@@ -7,8 +7,8 @@
       <dropzone
         [message]="dzMessage"
         (error)="onUploadError($event)"
-        (success)="onUploadSuccess($event, file)"
-        (addedFile)="onFileAdded($event, file)">
+        (success)="onUploadSuccess($event)"
+        (addedFile)="onFileAdded($event)">
         </dropzone>
     </div>
   </div>

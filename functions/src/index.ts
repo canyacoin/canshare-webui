@@ -16,6 +16,7 @@ exports.shareFiles = functions.https.onRequest( (req, res) => {
     let files = req.body.files;
     let to = req.body.to.split(',').map(email => email.replace(/\s/g,''));
     let from = req.body.from;
+    let subject = req.body.subject;
     let message = req.body.message;
 
     let html = `<h3>Hi There!</h3><br>
@@ -43,8 +44,8 @@ exports.shareFiles = functions.https.onRequest( (req, res) => {
 
     let msg = {
       to: to,
-      from: from,
-      subject: 'Your files via CanShare.io',
+      from: 'team@canya.com',
+      subject: subject,
       html: html,
       templateId: '83b9ba7f-41a3-4e2e-bf1b-74bae7cb950c',
     }

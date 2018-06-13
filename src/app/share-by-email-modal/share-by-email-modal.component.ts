@@ -26,6 +26,7 @@ export class ShareByEmailModalComponent implements OnInit {
 
   @Input() to: string = ''
   @Input() from: string = ''
+  @Input() subject: string = 'Your files via CanShare.io'
   @Input() message: string
 
   isValidToEmail: boolean = true
@@ -62,9 +63,9 @@ export class ShareByEmailModalComponent implements OnInit {
       this.isValidToEmail = true
       this.invalidToEmailMessage = ''
 
-      if (!this._isValidFromEmail()) return false;
-      this.isValidFromEmail = true
-      this.invalidFromEmailMessage = ''
+      // if (!this._isValidFromEmail()) return false;
+      // this.isValidFromEmail = true
+      // this.invalidFromEmailMessage = ''
 
       let filesIndexes = this.filesIndexes;
       let files = this.ls.getFiles();
@@ -80,7 +81,7 @@ export class ShareByEmailModalComponent implements OnInit {
         onAfterSend: false,
       });
 
-      this.email.shareFiles(files, this.to, this.from, this.message);
+      this.email.shareFiles(files, this.to, this.from, this.subject, this.message);
     }).catch(email => {
       this.isValidToEmail = false;
       this.invalidToEmailMessage = `${email} is not a valid email address`;

@@ -21,7 +21,7 @@ export class FileComponent implements OnInit {
 
   size: number
 
-  pctg: number
+  pctg: string
 
   progress: number
 

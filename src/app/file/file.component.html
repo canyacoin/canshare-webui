@@ -1,5 +1,5 @@
 <article (click)="onClick($event)" class="{{ isSelected ? 'is-selected' : '' }} file">
-  <div class="progress {{pctg == '100%' ? 'fade-out' : ''}}">
+  <div class="progress" [class.fade-out]="pctg == '100%'">
     <span [style.width]="pctg"></span>
   </div>
   <div class="content">
