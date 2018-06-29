@@ -77,6 +77,8 @@ export class FileComponent implements OnInit {
   }
 
   select(){
+    if (this.isUploading) return false
+
     this.isSelected = true;
 
     this.info.selectFile(this.ipfsHash);
