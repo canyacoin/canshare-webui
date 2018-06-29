@@ -1,15 +1,15 @@
 @charset "UTF-8";
 
-@import "./node_modules/bootstrap/scss/functions";
-@import "./src/assets/sass/_bootstrap-variables";
-@import "./node_modules/bootstrap/scss/mixins";
+@import "bootstrap/scss/functions";
+@import "sass/_bootstrap-variables";
+@import "bootstrap/scss/mixins";
 
 // EBM variables
-@import "./src/assets/sass/ebm-variables";
-@import "./src/assets/sass/ebm-fonts-setup";
-@import "./node_modules/ebm/functions/ebm-functions";
-@import "./node_modules/ebm/helpers/ebm-helpers";
+@import "sass/ebm-variables";
+@import "sass/ebm-fonts-setup";
+@import "ebm/functions/ebm-functions";
+@import "ebm/helpers/ebm-helpers";
 
-@import "./src/assets/sass/theme/variables";
-@import "./src/assets/sass/theme/mixins";
+@import "sass/theme/variables";
+@import "sass/theme/mixins";
 
