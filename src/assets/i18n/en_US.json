@@ -1,0 +1,11 @@
+{
+  "header": {
+    "blog": "Blog",
+    "forum": "Forum",
+    "telegram": "Telegram",
+    "about": "About"
+  },
+  "footer": {
+    "home": "Home"
+  }
+}

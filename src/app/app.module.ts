@@ -8,8 +8,6 @@ import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { DropzoneComponent } from './dropzone/dropzone.component';
 import { FilesListComponent } from './files-list/files-list.component';
 import { FileComponent } from './file/file.component';
@@ -22,6 +20,8 @@ import { CardsComponent } from './cards/cards.component';
 import { ShareByEmailModalComponent } from './share-by-email-modal/share-by-email-modal.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShareComponent } from './share/share.component';
+
+import { CommonLibModule } from '@canyaio/common-lib';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
@@ -36,8 +36,6 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
     DropzoneComponent,
     FilesListComponent,
     FileComponent,
@@ -52,6 +50,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    CommonLibModule
   ],
   providers: [
     IpfsService,

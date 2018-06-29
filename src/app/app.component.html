@@ -3,8 +3,13 @@
 <app-about-modal></app-about-modal>
 <app-share-by-email-modal></app-share-by-email-modal>
 
+<canyalib-language-switch [exclude]="[]"></canyalib-language-switch>
+
 <main class="site-wrapper pb-3" role="main">
-  <app-header></app-header>
+  <canyalib-header
+    [logo]="{ src: 'assets/img/CanYa_CanShare.svg', alt: 'CanSign Logo', routerLink: ['/documents/index'] }"
+    [buttons]="[{ index: 0, innerHtml: 'header.about', class: 'btn btn-primary btn-sm', onClick: [info, 'displayAboutModal'] }]">
+    </canyalib-header>
 
   <div class="container">
     <div class="alert alert-info alert-dismissible fade show" role="alert" id="canshare-alert">
@@ -25,4 +30,13 @@
 
 <app-cards></app-cards>
 
-<app-footer></app-footer>
+<section class="section shadow-1" style="background-image: linear-gradient(122deg, #3cf, #01fecd);">
+  <div class="container text-center">
+    <img src="assets/img/telegram.png" alt="CanYa - telegram" width="auto" height="100px">
+    <h4 class="text-white pt-25">Got another question? Ask our active community on Telegram.</h4>
+    <br>
+    <a href="https://t.me/canyacoin" target="_blank" class="btn btn-lg btn-primary shadow-3">Join us on Telegram</a>
+  </div>
+</section>
+
+<canyalib-footer></canyalib-footer>

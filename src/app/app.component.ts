@@ -16,7 +16,7 @@ declare var window: any;
 export class AppComponent implements OnInit {
   title = 'app';
 
-  constructor(){}
+  constructor(public info: InfoService){}
 
   ngOnInit(){
   }

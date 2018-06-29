@@ -1,0 +1,11 @@
+{
+  "header": {
+    "blog": "Blog",
+    "forum": "Foro",
+    "telegram": "Telegram",
+    "about": "Acerca de"
+  },
+  "footer": {
+    "home": "Canya.io"
+  }
+}
