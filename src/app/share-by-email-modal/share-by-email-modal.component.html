@@ -4,42 +4,38 @@
       <div class="col-sm-8">
         <div class="modal-body" *ngIf="onBeforeSend">
           <nav class="mb-3 text-right">
-            <button class="btn btn-outline btn-light" (click)="display = false">Close <i class="fa fa-times-circle"></i></button>
+            <button class="btn btn-outline btn-light" (click)="display = false">{{ 'close' | translate }} <i class="fa fa-times-circle"></i></button>
           </nav>
           <fieldset class="form-group">
-            <label for="to">Send to <span class="text-primary">*</span></label>
-            <input type="email" [(ngModel)]="to" name="to" class="form-control form-control-lg" placeholder="Comma separated recipients' email addresses">
-            <small class="text-danger" *ngIf="!isValidToEmail">{{ invalidToEmailMessage }}</small>
+            <label for="to">{{ 'send-to' | translate }} <span class="text-primary">*</span></label>
+            <input type="email" [(ngModel)]="to" name="to" class="form-control form-control-lg" [attr.placeholder]="'send-to-placeholder' | translate">
+            <small class="text-danger" *ngIf="!isValidToEmail" [translate]="invalidToEmailMessage | translate:{email: to}"></small>
           </fieldset>
           <fieldset class="form-group">
-            <label for="from">From <span class="text-primary">*</span></label>
-            <input type="text" [(ngModel)]="from" name="from" class="form-control form-control-lg" placeholder="Who's sending this?">
-            <!-- <small class="text-danger" *ngIf="!isValidFromEmail">{{ invalidFromEmailMessage }}</small> -->
+            <label for="from">{{ 'from' | translate }} <span class="text-primary">*</span></label>
+            <input type="text" [(ngModel)]="from" name="from" class="form-control form-control-lg" [attr.placeholder]="'from-placeholder' | translate">
+            <small class="text-danger" *ngIf="!isValidFromEmail">{{ invalidFromEmailMessage | translate }}</small>
           </fieldset>
           <fieldset class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" [(ngModel)]="subject" name="subject" class="form-control form-control-lg" placeholder="Write an optional subject line">
+            <label for="subject">{{ 'subject' | translate }}</label>
+            <input type="text" [(ngModel)]="subject" name="subject" class="form-control form-control-lg" [attr.placeholder]="'subject-placeholder' | translate">
           </fieldset>
           <fieldset class="form-group">
-            <label for="message">Message</label>
-            <textarea name="message" [(ngModel)]="message" class="form-control form-control-lg" placeholder="Enter your message"></textarea>
+            <label for="message">{{ 'message' | translate }}</label>
+            <textarea name="message" [(ngModel)]="message" class="form-control form-control-lg" [attr.placeholder]="'message-placeholder' | translate"></textarea>
           </fieldset>
           <fieldset class="form-group text-center">
-            <button class="btn btn-primary btn-lg" (click)="send()">Send</button>
+            <button class="btn btn-primary btn-lg" (click)="send()">{{ 'send' | translate }}</button>
           </fieldset>
         </div>
         <div class="modal-body" *ngIf="onSending">
-          <h1>Sending...</h1>
+          <h1>{{ 'sending' | translate }}</h1>
         </div>
         <div class="modal-body" *ngIf="onAfterSend">
           <nav class="mb-3 text-right">
-            <button class="btn btn-outline btn-light" (click)="display = false">Close <i class="fa fa-times-circle"></i></button>
+            <button class="btn btn-outline btn-light" (click)="display = false">{{ 'close' | translate }} <i class="fa fa-times-circle"></i></button>
           </nav>
-          <div class="text-center">
-            <h1>Booyah!</h1>
-            <p>Send successful</p>
-            <img src="assets/img/CanYa_Paper-Plane.svg" alt="Paper Plane image" width="320px" height="auto">
-          </div>
+          <div class="text-center" [innerHTML]="'send-successful' | translate"></div>
         </div>
       </div>
     </div>

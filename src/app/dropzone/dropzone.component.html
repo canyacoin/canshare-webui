@@ -5,7 +5,7 @@
         <span [class.text-success]="nodeIsReady" [class.text-danger]="!nodeIsReady"><i class="fa fa-circle"></i> {{ status }}</span>
       </div>
       <dropzone
-        [message]="dzMessage"
+        [message]="'dropzone-message' | translate"
         (error)="onUploadError($event)"
         (success)="onUploadSuccess($event)"
         (addedFile)="onFileAdded($event)">

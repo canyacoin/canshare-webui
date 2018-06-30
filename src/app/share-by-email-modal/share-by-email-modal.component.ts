@@ -63,9 +63,9 @@ export class ShareByEmailModalComponent implements OnInit {
       this.isValidToEmail = true
       this.invalidToEmailMessage = ''
 
-      // if (!this._isValidFromEmail()) return false;
-      // this.isValidFromEmail = true
-      // this.invalidFromEmailMessage = ''
+      if (!this._isValidFromEmail()) return false;
+      this.isValidFromEmail = true
+      this.invalidFromEmailMessage = ''
 
       let filesIndexes = this.filesIndexes;
       let files = this.ls.getFiles();
@@ -84,7 +84,7 @@ export class ShareByEmailModalComponent implements OnInit {
       this.email.shareFiles(files, this.to, this.from, this.subject, this.message);
     }).catch(email => {
       this.isValidToEmail = false;
-      this.invalidToEmailMessage = `${email} is not a valid email address`;
+      this.invalidToEmailMessage = `invalid-email-address`;
       return false;
     });
   }
@@ -97,9 +97,9 @@ export class ShareByEmailModalComponent implements OnInit {
   }
 
   _isValidFromEmail(): boolean {
-    if (typeof this.from != 'string' || !validator.isEmail(this.from)) {
+    if (typeof this.from != 'string' || this.from.length <= 0) {
       this.isValidFromEmail = false;
-      this.invalidFromEmailMessage = 'Email is not a valid email address';
+      this.invalidFromEmailMessage = 'invalid-from-text';
 
       return false;
     }

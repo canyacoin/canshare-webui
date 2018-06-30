@@ -12,13 +12,6 @@ export class DropzoneComponent implements OnInit {
 
   @ViewChild(Dropzone) dropzone: Dropzone;
 
-  dzMessage: string = `
-    <i class="fa fa-cloud-upload-alt"></i>
-    <h4>Drag files to upload</h4>
-    <p>- or -</p>
-    <span class="btn btn-primary">Browse</span>
-  `
-
   loadingMessage: string
 
   load: boolean = true

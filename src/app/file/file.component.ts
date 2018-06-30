@@ -33,6 +33,7 @@ export class FileComponent implements OnInit {
   streamEnded: boolean = false
   isSelected: boolean = false
 
+  copiedText: string = 'copy-file-link'
 
   constructor(
     private zone: NgZone,
@@ -93,13 +94,15 @@ export class FileComponent implements OnInit {
 
     this.zone.run(() => console.log('field run'));
 
+    let self = this
+
     new clipboard(`.copy-${this.ipfsHash}`, {
       text: function(trigger) {
 
-        trigger.innerText = 'Copied!';
+        self.copiedText = 'copied'
         trigger.classList.add('copied');
         setTimeout(() => {
-          trigger.innerText = 'Copy file link';
+          self.copiedText = 'copy-file-link';
           trigger.classList.remove('copied');
         }, 2000);
 

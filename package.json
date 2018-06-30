@@ -22,7 +22,7 @@
     "@angular/platform-browser": "6.0.7",
     "@angular/platform-browser-dynamic": "6.0.7",
     "@angular/router": "6.0.7",
-    "@canyaio/common-lib": "^0.2.4",
+    "@canyaio/common-lib": "^0.3.0",
     "@ngx-translate/core": "^10.0.2",
     "@ngx-translate/http-loader": "^3.0.1",
     "clipboard": "^2.0.0",

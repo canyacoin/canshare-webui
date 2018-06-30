@@ -4,36 +4,36 @@
     <div class="files-list-bar">
       <div class="actions-dropdown">
         <div class="title">
-          <span>Actions <i class="fa fa-chevron-down"></i></span>
+          <span>{{ 'actions' | translate }} <i class="fa fa-chevron-down"></i></span>
         </div>
         <div class="files-list-actions">
           <div
             class="action {{ (info.selectedFiles.length <= 0) ? 'disabled' : '' }}"
             (click)="applyAction('share-multiple-files')"
-            data-toggle="tooltip" data-placement="right" title="" data-original-title="Share via email with a link attached for easy share and download.">
-            <span>Share by email</span>
+            data-toggle="tooltip" data-placement="right" title="" [attr.data-original-title]="'share-via-email-tooltip' | translate">
+            <span>{{ 'share-by-email' | translate }}</span>
           </div>
           <div
             class="action text-danger {{ (info.selectedFiles.length <= 0) ? 'disabled' : '' }}"
             (click)="applyAction('remove-multiple-files')"
-            data-toggle="tooltip" data-placement="right" title="" data-original-title="NOTE: Files cannot be removed from IPFS once they have been uploaded.">
-            <span>Remove</span>
+            data-toggle="tooltip" data-placement="right" title="" [attr.data-original-title]="'ipfs-notice-tooltip' | translate">
+            <span>{{ 'remove' | translate }}</span>
           </div>
         </div>
       </div>
       <div class="files-count">
-        <span>{{ info.selectedFiles.length }} files selected</span>
+        <span>{{ info.selectedFiles.length }} {{ 'files-selected' | translate }}</span>
       </div>
     </div>
 
     <div class="wrapper">
       <template #filesList></template>
       <div class="message" *ngIf="hasNoFiles">
-        <p>You have uploaded no files</p>
+        <p>{{ 'no-files-uploaded' | translate }}</p>
       </div>
       <div class="text-center mt-3">
-        <p class="text-muted">CanShare is powered by IPFS Technology.</p>
-        <p class="text-muted">File download speed does not depend on CanYa infrastructure or service.<br>Files are uploaded to IPFS nodes which loading speeds depend on the IPFS network.</p>
+        <p class="text-muted">{{ 'canshare-is-powered' | translate }}</p>
+        <p class="text-muted" [innerHTML]="'file-download-speed' | translate"></p>
       </div>
     </div>
   </div>

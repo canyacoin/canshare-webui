@@ -6,7 +6,7 @@
     <span class="name">{{ name }}</span>
   </div>
   <div class="still-working" *ngIf="isUploading">
-    <em *ngIf="streamEnded">still working...</em>
+    <em *ngIf="streamEnded">{{ 'still-working' | translate }}</em>
   </div>
   <div class="cancel-upload" *ngIf="isUploading">
     <!-- <span class="text-danger" (click)="cancelUpload()">cancel upload</span> -->
@@ -18,10 +18,10 @@
     <div class="dropdown-wrapper">
       <i class="fa fa-ellipsis-v"></i>
       <div class="dropdown">
-        <a class="item" href="{{ ipfsLink }}" target="_blank"><span>View file <i class="fa fa-external-link-alt"></i></span></a>
-        <span class="item copy-{{ipfsHash}}">Copy file link</span>
-        <span class="item" (click)="info.displayShareFileByEmailModal([ipfsHash])" data-toggle="tooltip" data-placement="right" title="" data-original-title="Share via email with a link attached for easy share and download.">Share by email</span>
-        <span class="item text-danger" (click)="info.removeFiles([ipfsHash])" data-toggle="tooltip" data-placement="right" title="" data-original-title="NOTE: Files cannot be removed from IPFS once they have been uploaded.">Remove</span>
+        <a class="item" href="{{ ipfsLink }}" target="_blank"><span>{{ "view-file" | translate }} <i class="fa fa-external-link-alt"></i></span></a>
+        <span class="item copy-{{ipfsHash}}">{{ copiedText | translate }}</span>
+        <span class="item" (click)="info.displayShareFileByEmailModal([ipfsHash])" data-toggle="tooltip" data-placement="right" title="" [attr.data-original-title]="'share-via-email-tooltip' | translate">{{ 'share-by-email' | translate }}</span>
+        <span class="item text-danger" (click)="info.removeFiles([ipfsHash])" data-toggle="tooltip" data-placement="right" title="" [attr.data-original-title]="'ipfs-notice-tooltip' | translate">{{ 'remove' | translate }}</span>
       </div>
     </div>
   </div>
