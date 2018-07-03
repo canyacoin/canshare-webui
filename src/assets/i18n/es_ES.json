@@ -8,6 +8,17 @@
   "footer": {
     "home": "Canya.io"
   },
+  "cards": {
+    "CanInvoice": "Crea facturas limpias y profesionales fácilmente",
+    "CanStation": "Calcula la cantidad de GAS necesaria para tu transacción de ETH",
+    "CanFund": "Presenta tu propuesta, vota, contribuye y recauda inversión",
+    "CanSend": "Envía tokens ERC20 a varias direcciones de ETH al mismo tiempo",
+    "CanShare": "Envía y recibe ficheros usando tecnología decentralizada",
+    "CanTrack": "Una manera sencilla de llevar el control del tiempo de tus proyectos",
+    "CanSign": "Sube documentos a IPFS y fírmalos con tu dirección de Ethereum",
+    "CanSeek": "Contrata y sé contratado usando tecnología decentralizada",
+    "check-it-out": "Ver la app"
+  },
   "invalid-from-text": "El campo 'de' no puede estar vacío",
   "invalid-email-address": "'{{ email }}' no es un correo electrónico válido",
   "send-to-placeholder": "Correos electrónicos separados por coma",

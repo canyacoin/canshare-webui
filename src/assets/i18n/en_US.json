@@ -8,6 +8,17 @@
   "footer": {
     "home": "Home"
   },
+  "cards": {
+    "CanInvoice": "Easily create your own clean, professional and accurate invoices",
+    "CanStation": "Find out the ideal amount of gas to allocate to your ETH transaction",
+    "CanFund": "Shoot your pitch, vote, contribute and raise funds",
+    "CanSend": "Send ERC20 tokens to multiple addresses at once",
+    "CanShare": "Send and receive files using distributed technology",
+    "CanTrack": "A crisp and easy to use task tracker to help you with your project",
+    "CanSign": "Upload documents to IPFS and sign them with your Ethereum address.",
+    "CanSeek": "Hire and be hired with decentralised technology.",
+    "check-it-out": "Check it out"
+  },
   "invalid-from-text": "The 'from' field cannot be empty",
   "invalid-email-address": "'{{ email }}' is not a valid email address",
   "send-to-placeholder": "Comma separated recipients' email addresses",
